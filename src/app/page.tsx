@@ -13,12 +13,12 @@ export default function Home() {
 
         {/* Avatar Section */}
         <div className="flex justify-center">
-          <div className="relative w-32 h-32 group">
+          <div className="relative w-32 h-32">
             <Image
               src="/avatar.png"
               alt="Dean Whittaker"
               fill
-              className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl transition-shadow duration-300"
+              className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg"
               priority
               quality={100}
               unoptimized
