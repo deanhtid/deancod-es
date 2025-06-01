@@ -6,7 +6,10 @@ export default function Home() {
       <div className="max-w-sm sm:max-w-md lg:max-w-2xl xl:max-w-3xl w-full space-y-8 lg:space-y-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 sm:p-8 lg:p-12 xl:p-16 shadow-xl">
         {/* Avatar Section */}
         <div className="flex justify-center">
-          <div className="relative w-32 h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48">
+          <div
+            className="relative w-32 h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48"
+            style={{ willChange: "auto", transform: "translate3d(0,0,0)" }}
+          >
             <Image
               src="/avatar.png"
               alt="Dean Whittaker"
