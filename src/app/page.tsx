@@ -18,7 +18,7 @@ export default function Home() {
               src="/avatar.png"
               alt="Dean Whittaker"
               fill
-              className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300"
+              className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl transition-shadow duration-300"
               priority
               quality={100}
               unoptimized
