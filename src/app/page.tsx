@@ -3,22 +3,22 @@ import Image from "next/image";
 export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-lg w-full space-y-8 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-8 shadow-xl">
+      <div className="max-w-sm sm:max-w-md lg:max-w-2xl xl:max-w-3xl w-full space-y-8 lg:space-y-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 sm:p-8 lg:p-12 xl:p-16 shadow-xl">
         {/* Header Section */}
         <div className="text-center">
-          <h1 className="text-3xl font-bold text-gray-900 dark:text-white">
+          <h1 className="text-3xl lg:text-4xl xl:text-5xl font-bold text-gray-900 dark:text-white">
             About Me
           </h1>
         </div>
 
         {/* Avatar Section */}
         <div className="flex justify-center">
-          <div className="relative w-32 h-32">
+          <div className="relative w-32 h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48">
             <Image
               src="/avatar.png"
               alt="Dean Whittaker"
               fill
-              className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg"
+              className="relative rounded-full object-cover border-4 lg:border-6 border-white dark:border-gray-800 shadow-lg"
               priority
               quality={100}
               unoptimized
@@ -28,11 +28,11 @@ export default function Home() {
 
         {/* Bio Section */}
         <div className="text-center space-y-4">
-          <h2 className="text-2xl font-bold text-gray-900 dark:text-white tracking-tight">
+          <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
             Dean Whittaker
           </h2>
-          <div className="space-y-2">
-            <h3 className="text-lg text-blue-600 dark:text-blue-400 font-semibold">
+          <div className="space-y-2 lg:space-y-3">
+            <h3 className="text-lg lg:text-xl xl:text-2xl text-blue-600 dark:text-blue-400 font-semibold">
               Cloud Engineer
             </h3>
             <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1">
@@ -46,8 +46,8 @@ export default function Home() {
               Newcastle Upon Tyne, England, United Kingdom
             </p>
           </div>
-          <div className="max-w-md mx-auto">
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm">
+          <div className="max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
+            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm lg:text-base xl:text-lg">
               AWS Cloud Engineer specialising in microservices, serverless
               technologies, and DevOps. Expert in Python, JavaScript, and
               building scalable cloud solutions with AWS services. Passionate
