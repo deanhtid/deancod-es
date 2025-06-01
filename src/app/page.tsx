@@ -1,5 +1,3 @@
-import Image from "next/image";
-
 export default function Home() {
   return (
     <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
@@ -14,13 +12,11 @@ export default function Home() {
         {/* Avatar Section */}
         <div className="flex justify-center">
           <div className="relative w-32 h-32 group">
-            <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
-            <Image
+            <img
               src="/avatar.png"
               alt="Dean Whittaker"
-              fill
-              className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg"
-              priority
+              className="relative w-full h-full rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg group-hover:shadow-xl group-hover:scale-105 transition-all duration-300"
+              loading="eager"
             />
           </div>
         </div>
