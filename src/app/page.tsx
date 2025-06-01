@@ -16,7 +16,7 @@ export default function Home() {
           <div className="relative w-32 h-32 group">
             <div className="absolute inset-0 bg-gradient-to-r from-blue-400 to-purple-500 rounded-full blur opacity-25 group-hover:opacity-40 transition-opacity duration-300"></div>
             <Image
-              src="/avatar.jpg"
+              src="/avatar.png"
               alt="Dean Whittaker"
               fill
               className="relative rounded-full object-cover border-4 border-white dark:border-gray-800 shadow-lg"
