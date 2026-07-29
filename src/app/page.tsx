@@ -1,98 +1,291 @@
+import {
+  ArrowUpRightIcon,
+  CloudIcon,
+  CodeBracketSquareIcon,
+  EnvelopeIcon,
+  MapPinIcon,
+  ShieldCheckIcon,
+  SignalIcon,
+} from "@heroicons/react/24/outline";
 import Image from "next/image";
+
+const capabilities = [
+  {
+    title: "Production AI infrastructure",
+    description:
+      "Governed model access, secure agent and tool integrations, knowledge retrieval and the controls needed to move beyond a prototype.",
+    icon: CloudIcon,
+  },
+  {
+    title: "Secure platform delivery",
+    description:
+      "Repeatable AWS infrastructure with Terraform, CI/CD, protected approvals, policy checks and clear human decision points.",
+    icon: ShieldCheckIcon,
+  },
+  {
+    title: "Reliability and observability",
+    description:
+      "Useful telemetry, diagnostics, failure handling and runtime verification that prove a service works after deployment.",
+    icon: SignalIcon,
+  },
+];
+
+const deliverySteps = [
+  ["01", "Understand", "Research the problem, constraints and production risk."],
+  ["02", "Design", "Turn ambiguity into a secure, operable architecture."],
+  ["03", "Deliver", "Build the infrastructure, automation and safety controls."],
+  ["04", "Prove", "Verify the live service, document it and support the outcome."],
+];
+
+const skills = [
+  "Platform Engineering",
+  "Production AI",
+  "Agentic Systems",
+  "AWS",
+  "Amazon Bedrock",
+  "Terraform",
+  "CI/CD",
+  "Datadog",
+  "Observability",
+  "Security",
+  "Reliability",
+];
+
+const personSchema = {
+  "@context": "https://schema.org",
+  "@type": "Person",
+  name: "Dean Whittaker",
+  url: "https://deancod.es",
+  image: "https://deancod.es/avatar.png",
+  jobTitle: "Senior Platform Engineer",
+  homeLocation: {
+    "@type": "Place",
+    name: "Sunderland, England, United Kingdom",
+  },
+  sameAs: ["https://www.linkedin.com/in/dean-whittaker/"],
+  knowsAbout: skills,
+};
 
 export default function Home() {
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-white dark:from-gray-900 dark:to-gray-800 py-12 px-4 sm:px-6 lg:px-8">
-      <div className="max-w-sm sm:max-w-md lg:max-w-2xl xl:max-w-3xl w-full space-y-8 lg:space-y-12 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm border border-gray-200/50 dark:border-gray-700/50 rounded-2xl p-6 sm:p-8 lg:p-12 xl:p-16 shadow-xl">
-        {/* Avatar Section */}
-        <div className="flex justify-center">
-          <div
-            className="relative w-32 h-32 lg:w-40 lg:h-40 xl:w-48 xl:h-48"
-            style={{ willChange: "auto", transform: "translate3d(0,0,0)" }}
-          >
-            <Image
-              src="/avatar.png"
-              alt="Dean Whittaker"
-              fill
-              className="relative rounded-full object-cover border-4 lg:border-6 border-white dark:border-gray-800 shadow-lg"
-              priority
-              quality={100}
-              unoptimized
-            />
-          </div>
-        </div>
+    <div className="site-shell min-h-screen overflow-hidden">
+      <a
+        href="#content"
+        className="sr-only fixed left-4 top-4 z-50 rounded-full bg-white px-4 py-2 text-slate-950 focus:not-sr-only"
+      >
+        Skip to content
+      </a>
 
-        {/* Bio Section */}
-        <div className="text-center space-y-4">
-          <h2 className="text-2xl lg:text-3xl xl:text-4xl font-bold text-gray-900 dark:text-white tracking-tight">
-            Dean Whittaker
-          </h2>
-          <div className="space-y-2 lg:space-y-3">
-            <h3 className="text-lg lg:text-xl xl:text-2xl text-blue-600 dark:text-blue-400 font-semibold">
-              Cloud Engineer
-            </h3>
-            <p className="text-sm text-gray-500 dark:text-gray-400 flex items-center justify-center gap-1">
-              <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 20 20">
-                <path
-                  fillRule="evenodd"
-                  d="M5.05 4.05a7 7 0 119.9 9.9L10 18.9l-4.95-4.95a7 7 0 010-9.9zM10 11a2 2 0 100-4 2 2 0 000 4z"
-                  clipRule="evenodd"
+      <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-7 lg:px-8">
+        <a
+          href="#content"
+          className="group flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          aria-label="Dean Whittaker, home"
+        >
+          <span className="grid size-10 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-sm font-bold tracking-wider text-white transition group-hover:border-cyan-300/50 group-hover:text-cyan-200">
+            DW
+          </span>
+          <span className="hidden text-sm font-medium text-slate-300 sm:block">
+            Senior Platform Engineer
+          </span>
+        </a>
+
+        <a
+          href="https://www.linkedin.com/in/dean-whittaker/"
+          target="_blank"
+          rel="noopener noreferrer"
+          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+        >
+          LinkedIn
+          <ArrowUpRightIcon className="size-4" aria-hidden="true" />
+        </a>
+      </header>
+
+      <main id="content">
+        <section className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-24 pt-14 lg:grid-cols-[1fr_22rem] lg:items-center lg:gap-20 lg:px-8 lg:pb-32 lg:pt-24">
+          <div>
+            <div className="mb-7 inline-flex items-center gap-2 rounded-full border border-cyan-300/20 bg-cyan-300/[0.07] px-3 py-1.5 text-xs font-semibold uppercase tracking-[0.18em] text-cyan-200">
+              <span className="size-1.5 rounded-full bg-cyan-300 shadow-[0_0_12px_rgba(103,232,249,0.9)]" />
+              Production AI · Platform Engineering
+            </div>
+
+            <h1 className="max-w-4xl text-balance text-5xl font-semibold leading-[1.03] tracking-[-0.045em] text-white sm:text-6xl lg:text-7xl">
+              I build the infrastructure that makes AI work in production.
+            </h1>
+
+            <p className="mt-7 max-w-2xl text-pretty text-lg leading-8 text-slate-300 sm:text-xl">
+              I design secure AWS platforms, delivery controls and operational
+              systems that take ambitious AI ideas from research through to a
+              dependable, supportable service.
+            </p>
+
+            <div className="mt-9 flex flex-col gap-3 sm:flex-row">
+              <a
+                href="https://www.linkedin.com/in/dean-whittaker/"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              >
+                Connect on LinkedIn
+                <ArrowUpRightIcon className="size-4" aria-hidden="true" />
+              </a>
+              <a
+                href="mailto:dean@deancod.es"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
+              >
+                <EnvelopeIcon className="size-4" aria-hidden="true" />
+                dean@deancod.es
+              </a>
+            </div>
+
+            <p className="mt-6 flex items-center gap-2 text-sm text-slate-400">
+              <MapPinIcon className="size-4 text-violet-300" aria-hidden="true" />
+              Sunderland, England, United Kingdom
+            </p>
+          </div>
+
+          <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
+            <div className="profile-glow absolute inset-0 rounded-[2rem]" />
+            <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-slate-900/70 p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur">
+              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.45rem] bg-gradient-to-br from-slate-800 to-slate-950">
+                <Image
+                  src="/avatar.png"
+                  alt="Dean Whittaker"
+                  fill
+                  className="object-cover object-center"
+                  priority
+                  sizes="(max-width: 1024px) 352px, 320px"
                 />
-              </svg>
-              Newcastle Upon Tyne, England, United Kingdom
-            </p>
+              </div>
+              <div className="flex items-end justify-between gap-4 px-1 pb-1 pt-5">
+                <div>
+                  <p className="font-semibold text-white">Dean Whittaker</p>
+                  <p className="mt-1 text-sm text-slate-400">
+                    Senior Platform Engineer
+                  </p>
+                </div>
+                <CodeBracketSquareIcon
+                  className="size-7 text-cyan-300"
+                  aria-hidden="true"
+                />
+              </div>
+            </div>
           </div>
-          <div className="max-w-md lg:max-w-lg xl:max-w-xl mx-auto">
-            <p className="text-gray-600 dark:text-gray-300 leading-relaxed text-sm lg:text-base xl:text-lg">
-              AWS Cloud Engineer specialising in microservices, serverless
-              technologies, and DevOps. Expert in Python, JavaScript, and
-              building scalable cloud solutions with AWS services. Passionate
-              about automation, infrastructure as code, and delivering secure,
-              high-performance systems.
-            </p>
-          </div>
-        </div>
+        </section>
 
-        {/* Social Links Section */}
-        <div className="flex justify-center space-x-6">
-          <a
-            href="https://www.linkedin.com/in/deanhtid99/"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="group p-2 rounded-lg hover:bg-blue-50 dark:hover:bg-blue-900/20 transition-colors duration-200"
-            aria-label="LinkedIn Profile"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              className="w-6 h-6 fill-gray-600 group-hover:fill-blue-600 dark:fill-gray-400 dark:group-hover:fill-blue-400 transition-colors duration-200"
+        <section
+          aria-labelledby="capabilities-heading"
+          className="border-y border-white/10 bg-white/[0.025]"
+        >
+          <div className="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
+            <div className="max-w-2xl">
+              <p className="text-sm font-semibold uppercase tracking-[0.18em] text-violet-300">
+                What I deliver
+              </p>
+              <h2
+                id="capabilities-heading"
+                className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+              >
+                The systems around the model matter.
+              </h2>
+              <p className="mt-5 text-lg leading-8 text-slate-400">
+                Production AI needs more than a successful demonstration. It
+                needs identity, policy, traceability, safe delivery and proof
+                that the live service behaves as intended.
+              </p>
+            </div>
+
+            <div className="mt-12 grid gap-5 md:grid-cols-3">
+              {capabilities.map(({ title, description, icon: Icon }) => (
+                <article
+                  key={title}
+                  className="rounded-3xl border border-white/10 bg-slate-900/55 p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-slate-900/80"
+                >
+                  <div className="grid size-11 place-items-center rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.08] text-cyan-200">
+                    <Icon className="size-6" aria-hidden="true" />
+                  </div>
+                  <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
+                  <p className="mt-3 leading-7 text-slate-400">{description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        <section
+          aria-labelledby="approach-heading"
+          className="mx-auto grid w-full max-w-6xl gap-12 px-6 py-20 lg:grid-cols-[0.78fr_1.22fr] lg:gap-20 lg:px-8 lg:py-28"
+        >
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+              End-to-end ownership
+            </p>
+            <h2
+              id="approach-heading"
+              className="mt-4 text-3xl font-semibold tracking-tight text-white sm:text-4xl"
             >
-              <path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z" />
-            </svg>
-          </a>
-          <a
-            href="mailto:deanhtid99@gmail.com"
-            className="group p-2 rounded-lg hover:bg-gray-50 dark:hover:bg-gray-800 transition-colors duration-200"
-            aria-label="Email"
-          >
-            <svg
-              width="24"
-              height="24"
-              viewBox="0 0 24 24"
-              fill="none"
-              className="w-6 h-6 stroke-gray-600 group-hover:stroke-gray-900 dark:stroke-gray-400 dark:group-hover:stroke-white transition-colors duration-200"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={1.5}
-                d="M21.75 6.75v10.5a2.25 2.25 0 01-2.25 2.25h-15a2.25 2.25 0 01-2.25-2.25V6.75m19.5 0A2.25 2.25 0 0019.5 4.5h-15a2.25 2.25 0 00-2.25 2.25m19.5 0v.243a2.25 2.25 0 01-1.07 1.916l-7.5 4.615a2.25 2.25 0 01-2.36 0L3.32 8.91a2.25 2.25 0 01-1.07-1.916V6.75"
-              />
-            </svg>
-          </a>
+              From ambiguity to a supportable production outcome.
+            </h2>
+            <p className="mt-5 text-lg leading-8 text-slate-400">
+              I am strongest where the problem is new, the environment is
+              regulated and the outcome has to work end to end.
+            </p>
+          </div>
+
+          <ol className="grid gap-px overflow-hidden rounded-3xl border border-white/10 bg-white/10 sm:grid-cols-2">
+            {deliverySteps.map(([number, title, description]) => (
+              <li key={number} className="bg-slate-950/90 p-7">
+                <span className="font-mono text-xs text-violet-300">{number}</span>
+                <h3 className="mt-4 text-lg font-semibold text-white">{title}</h3>
+                <p className="mt-2 leading-7 text-slate-400">{description}</p>
+              </li>
+            ))}
+          </ol>
+        </section>
+
+        <section className="mx-auto w-full max-w-6xl px-6 pb-24 lg:px-8 lg:pb-32">
+          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-300/[0.08] via-white/[0.025] to-violet-400/[0.08] p-8 sm:p-10 lg:p-12">
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
+              Core strengths
+            </p>
+            <div className="mt-6 flex flex-wrap gap-2.5">
+              {skills.map((skill) => (
+                <span
+                  key={skill}
+                  className="rounded-full border border-white/10 bg-slate-950/55 px-4 py-2 text-sm font-medium text-slate-200"
+                >
+                  {skill}
+                </span>
+              ))}
+            </div>
+            <div className="mt-10 flex flex-col justify-between gap-6 border-t border-white/10 pt-8 sm:flex-row sm:items-center">
+              <p className="max-w-xl text-lg leading-8 text-slate-300">
+                If you are building secure, production-grade AI systems on AWS,
+                I am always happy to connect.
+              </p>
+              <a
+                href="mailto:dean@deancod.es"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+              >
+                Start a conversation
+                <ArrowUpRightIcon className="size-4" aria-hidden="true" />
+              </a>
+            </div>
+          </div>
+        </section>
+      </main>
+
+      <footer className="border-t border-white/10">
+        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
+          <p>© {new Date().getFullYear()} Dean Whittaker</p>
+          <p>Senior Platform Engineer · Sunderland, UK</p>
         </div>
-      </div>
+      </footer>
+
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(personSchema) }}
+      />
     </div>
   );
 }

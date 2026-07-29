@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
@@ -14,39 +14,55 @@ const geistMono = Geist_Mono({
   display: "swap",
 });
 
+const title = "Dean Whittaker | Senior Platform Engineer";
+const description =
+  "Senior Platform Engineer specialising in production AI infrastructure, agentic systems, AWS, Terraform, CI/CD and observability.";
+
 export const metadata: Metadata = {
-  title: "About Me - Dean Whittaker",
-  description:
-    "Dean Whittaker - AWS Cloud Engineer specialising in microservices, serverless technologies, and DevOps. Based in Newcastle Upon Tyne, England.",
+  metadataBase: new URL("https://deancod.es"),
+  title,
+  description,
+  alternates: {
+    canonical: "/",
+  },
   keywords: [
     "Dean Whittaker",
-    "Cloud Engineer",
+    "Senior Platform Engineer",
+    "Production AI Infrastructure",
+    "Agentic Systems",
+    "Platform Engineering",
+    "Amazon Web Services",
     "AWS",
+    "Amazon Bedrock",
+    "Terraform",
+    "CI/CD",
+    "Datadog",
+    "Observability",
     "DevOps",
-    "microservices",
-    "serverless",
-    "Python",
-    "JavaScript",
-    "Newcastle Upon Tyne",
-    "infrastructure as code",
   ],
-  authors: [{ name: "Dean Whittaker" }],
+  authors: [{ name: "Dean Whittaker", url: "https://deancod.es" }],
   creator: "Dean Whittaker",
-  metadataBase: new URL("https://deancod.es"),
   openGraph: {
-    title: "About Me - Dean Whittaker",
-    description:
-      "AWS Cloud Engineer specialising in microservices, serverless technologies, and DevOps",
-    type: "website",
+    title,
+    description,
+    url: "/",
+    type: "profile",
     locale: "en_GB",
     siteName: "Dean Whittaker",
+    images: [
+      {
+        url: "https://deancod.es/og.png",
+        width: 1200,
+        height: 630,
+        alt: "Dean Whittaker, Senior Platform Engineer specialising in production AI infrastructure and agentic systems",
+      },
+    ],
   },
   twitter: {
-    card: "summary",
-    title: "About Me - Dean Whittaker",
-    description:
-      "AWS Cloud Engineer specialising in microservices, serverless technologies, and DevOps",
-    creator: "@DeaNHtiD99",
+    card: "summary_large_image",
+    title,
+    description,
+    images: ["https://deancod.es/og.png"],
   },
   robots: {
     index: true,
@@ -57,10 +73,10 @@ export const metadata: Metadata = {
   },
 };
 
-export const viewport = {
+export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
-  maximumScale: 1,
+  themeColor: "#070b14",
 };
 
 export default function RootLayout({
@@ -70,13 +86,10 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth">
-      <head>
-        <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
-      </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased font-sans text-gray-900 dark:text-white bg-white dark:bg-gray-900 transition-colors duration-200`}
+        className={`${geistSans.variable} ${geistMono.variable} bg-slate-950 font-sans text-white antialiased`}
       >
-        <main className="relative">{children}</main>
+        {children}
       </body>
     </html>
   );

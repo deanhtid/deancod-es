@@ -1,15 +1,16 @@
-# Dean Whittaker - About Me Page
+# Dean Whittaker - Professional Profile
 
-A modern, responsive static "About Me" page built with Next.js, Tailwind CSS, and configured for static export. Perfect for hosting on Cloudflare Pages, GitHub Pages, or any static hosting service.
+A responsive professional profile for Dean Whittaker, focused on senior platform engineering, production AI infrastructure and secure AWS delivery. Built with Next.js and Tailwind CSS, then exported as a static site.
 
 ## ✨ Features
 
 - **Responsive Design**: Optimized for mobile, tablet, and desktop
-- **Dark Mode**: Automatic dark/light mode based on system preference
-- **Modern UI**: Glass-morphism design with gradient backgrounds and subtle animations
+- **Dark presentation**: High-contrast, infrastructure-inspired visual system
+- **Professional positioning**: Aligned with Dean's LinkedIn platform and production AI profile
+- **Modern UI**: Dark infrastructure-inspired design with responsive layouts
 - **Optimized Performance**: Static export for fast loading
-- **SEO Ready**: Complete meta tags, Open Graph, and Twitter cards
-- **Accessible**: ARIA labels, semantic HTML, and keyboard navigation
+- **SEO Ready**: Canonical metadata, structured data, Open Graph and X cards
+- **Accessible**: Semantic sections, visible focus states, a skip link and reduced-motion support
 
 ## 🚀 Quick Start
 
@@ -29,7 +30,7 @@ pnpm start
 
 ## 📁 Project Structure
 
-```
+```text
 deancod-es/
 ├── src/
 │   ├── app/
@@ -37,8 +38,8 @@ deancod-es/
 │   │   ├── page.tsx       # About Me page content
 │   │   └── globals.css    # Global Tailwind styles
 ├── public/
-│   ├── avatar.jpg         # Profile photo
-│   ├── linkedin.svg       # LinkedIn icon
+│   ├── avatar.png         # Profile photo
+│   └── og.png             # Social-sharing preview
 ├── out/                   # Generated static files (after build)
 ├── next.config.ts         # Next.js config for static export
 ├── tailwind.config.ts     # Tailwind CSS configuration
@@ -49,7 +50,7 @@ deancod-es/
 
 ### Update Personal Information
 
-1. **Avatar Photo**: Replace `public/avatar.jpg` with your photo
+1. **Avatar Photo**: Replace `public/avatar.png` with your photo
 2. **Personal Details**: Edit `src/app/page.tsx`:
 
    ```tsx
@@ -71,6 +72,7 @@ deancod-es/
    ```
 
 4. **Metadata**: Update SEO information in `src/app/layout.tsx`:
+
    ```tsx
    export const metadata: Metadata = {
      title: "About Me - Your Name",
