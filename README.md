@@ -39,7 +39,6 @@ deancod-es/
 ├── public/
 │   ├── avatar.jpg         # Profile photo
 │   ├── linkedin.svg       # LinkedIn icon
-│   └── github.svg         # GitHub icon
 ├── out/                   # Generated static files (after build)
 ├── next.config.ts         # Next.js config for static export
 ├── tailwind.config.ts     # Tailwind CSS configuration
@@ -66,9 +65,6 @@ deancod-es/
    ```tsx
    // LinkedIn
    href = "https://www.linkedin.com/in/your-username/";
-
-   // GitHub
-   href = "https://github.com/your-username";
 
    // Email
    href = "mailto:your-email@example.com";
