@@ -56,7 +56,7 @@ const personSchema = {
   "@type": "Person",
   name: "Dean Whittaker",
   url: "https://deancod.es",
-  image: "https://deancod.es/avatar.png",
+  image: "https://deancod.es/avatar.jpg",
   jobTitle: "Senior Platform Engineer",
   homeLocation: {
     "@type": "Place",
@@ -147,9 +147,9 @@ export default function Home() {
           <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
             <div className="profile-glow absolute inset-0 rounded-[2rem]" />
             <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-slate-900/70 p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur">
-              <div className="relative aspect-[4/5] overflow-hidden rounded-[1.45rem] bg-gradient-to-br from-slate-800 to-slate-950">
+              <div className="relative aspect-square overflow-hidden rounded-[1.45rem] bg-gradient-to-br from-slate-800 to-slate-950">
                 <Image
-                  src="/avatar.png"
+                  src="/avatar.jpg"
                   alt="Dean Whittaker"
                   fill
                   className="object-cover object-center"

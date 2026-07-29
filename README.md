@@ -38,7 +38,7 @@ deancod-es/
 │   │   ├── page.tsx       # About Me page content
 │   │   └── globals.css    # Global Tailwind styles
 ├── public/
-│   ├── avatar.png         # Profile photo
+│   ├── avatar.jpg         # Profile photo
 │   └── og.png             # Social-sharing preview
 ├── out/                   # Generated static files (after build)
 ├── next.config.ts         # Next.js config for static export
@@ -50,7 +50,7 @@ deancod-es/
 
 ### Update Personal Information
 
-1. **Avatar Photo**: Replace `public/avatar.png` with your photo
+1. **Avatar Photo**: Replace `public/avatar.jpg` with your photo
 2. **Personal Details**: Edit `src/app/page.tsx`:
 
    ```tsx
