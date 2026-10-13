@@ -84,7 +84,7 @@ export default function Home() {
       <header className="mx-auto flex w-full max-w-6xl items-center justify-between px-6 py-7 lg:px-8">
         <a
           href="#content"
-          className="group flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          className="group flex items-center gap-3 rounded-full focus:outline-hidden focus-visible:ring-2 focus-visible:ring-cyan-300"
           aria-label="Dean Whittaker, home"
         >
           <span className="grid size-10 place-items-center rounded-full border border-white/15 bg-white/6 text-sm font-bold tracking-wider text-white transition group-hover:border-cyan-300/50 group-hover:text-cyan-200">
@@ -99,7 +99,7 @@ export default function Home() {
           href="https://www.linkedin.com/in/dean-whittaker/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-hidden focus-visible:ring-2 focus-visible:ring-cyan-300"
         >
           LinkedIn
           <ArrowUpRightIcon className="size-4" aria-hidden="true" />
@@ -129,14 +129,14 @@ export default function Home() {
                 href="https://www.linkedin.com/in/dean-whittaker/"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                className="inline-flex items-center justify-center gap-2 rounded-full bg-cyan-300 px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-200 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-cyan-200 focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
               >
                 Connect on LinkedIn
                 <ArrowUpRightIcon className="size-4" aria-hidden="true" />
               </a>
               <a
                 href="mailto:dean@deancod.es"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-violet-300"
               >
                 <EnvelopeIcon className="size-4" aria-hidden="true" />
                 dean@deancod.es
@@ -332,7 +332,7 @@ export default function Home() {
               </p>
               <a
                 href="mailto:dean@deancod.es"
-                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-100 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
+                className="inline-flex shrink-0 items-center justify-center gap-2 rounded-full bg-white px-5 py-3 text-sm font-bold text-slate-950 transition hover:bg-cyan-100 focus:outline-hidden focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-slate-950"
               >
                 Start a conversation
                 <ArrowUpRightIcon className="size-4" aria-hidden="true" />
