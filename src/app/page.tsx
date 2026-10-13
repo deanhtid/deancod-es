@@ -54,6 +54,8 @@ const skills = [
   "Reliability",
 ];
 
+const pegcastFacts = ["iPhone app", "In private testing"];
+
 const personSchema = {
   "@context": "https://schema.org",
   "@type": "Person",
@@ -248,7 +250,7 @@ export default function Home() {
 
         <section
           aria-labelledby="projects-heading"
-          className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-20 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-20 lg:px-8 lg:pb-28"
+          className="mx-auto grid w-full max-w-6xl gap-12 px-6 pb-20 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-20 lg:px-8 lg:pb-28"
         >
           <div>
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-violet-300">
@@ -271,19 +273,18 @@ export default function Home() {
                 width={240}
                 height={240}
                 className="size-14 shrink-0 rounded-2xl"
-                sizes="56px"
               />
               <h3 className="flex-1 text-xl font-semibold text-white">
                 {/* The ::after layer makes the whole card the link target. */}
                 <Link
                   href="/pegcast/"
-                  className="after:absolute after:inset-0 after:rounded-3xl focus:outline-none"
+                  className="after:absolute after:inset-0 after:rounded-3xl focus:outline-hidden"
                 >
                   PegCast
                 </Link>
               </h3>
               <ArrowRightIcon
-                className="size-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1"
+                className="size-5 shrink-0 text-cyan-300 transition motion-safe:group-hover:translate-x-1"
                 aria-hidden="true"
               />
             </div>
@@ -291,8 +292,13 @@ export default function Home() {
               An iPhone app that tells you when to hang the washing out, and
               when to bring it in.
             </p>
-            <ul className="mt-5 flex flex-wrap gap-2" aria-label="About PegCast">
-              {["iPhone app", "In private testing"].map((fact) => (
+            {/* Tailwind removes list markers, so role="list" keeps the list in Safari VoiceOver. */}
+            <ul
+              role="list"
+              className="mt-5 flex flex-wrap gap-2"
+              aria-label="About PegCast"
+            >
+              {pegcastFacts.map((fact) => (
                 <li
                   key={fact}
                   className="rounded-full border border-white/10 bg-slate-950/55 px-3 py-1 text-sm font-medium text-slate-200"
