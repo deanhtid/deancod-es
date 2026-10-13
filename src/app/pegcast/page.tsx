@@ -20,12 +20,13 @@ export const metadata: Metadata = {
   title,
   description,
   alternates: {
-    canonical: "https://deancod.es/pegcast",
+    // The export writes pegcast/index.html, and Cloudflare Pages serves it at /pegcast/.
+    canonical: "https://deancod.es/pegcast/",
   },
   openGraph: {
     title,
     description,
-    url: "https://deancod.es/pegcast",
+    url: "https://deancod.es/pegcast/",
     type: "website",
     locale: "en_GB",
     siteName: "Dean Whittaker",
@@ -59,11 +60,11 @@ const privacyNoticeUrl: string | null = null;
 const homeAlt =
   "PegCast Home screen for Sunderland. The sky says Hang now, bring in by 7:00 pm, because moving air helps drying. Below are three times for today: hang at 9:00 am, dry by about 10:30 to 11:30 am, and bring in by 7:00 pm. The button at the bottom says I've hung it out.";
 const loadPlanAlt =
-  "The Load Plan screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Switches turn on a reminder at 7:00 pm and show the plan on the Lock Screen.";
+  "The Load Plan screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Two switches, both off, set a reminder at 7:00 pm and show the plan on the Lock Screen.";
 const widgetAlt =
   "A small Home Screen widget on a blue sky. It says On the line, bring in by today, 7:00 pm, saved and checked at 9:00 am.";
 const liveActivityAlt =
-  "A Live Activity on the Lock Screen. It says bring in by today, 7:00 pm, 10 hours left, saved and checked at 9:00 am.";
+  "A Live Activity on the Lock Screen. It says bring in by today, 7:00 pm, 10 hours, 0 minutes left, saved and checked at 9:00 am.";
 const chartAlt =
   "Weather details with two charts across the day. The rain chance is 0% in every hour. The wind is 7 mph in every hour. A shaded band marks the daylight hours.";
 
@@ -93,12 +94,12 @@ export default function PegCastPage() {
     <div className={`${styles.page} ${nunito.variable} relative min-h-screen`}>
       <a
         href="#content"
-        className="sr-only fixed left-4 top-4 z-50 rounded-full bg-white px-4 py-2 font-bold text-[#123e7c] focus:not-sr-only"
+        className={`${styles.onSky} sr-only fixed left-4 top-4 z-50 rounded-full bg-white px-4 py-2 font-bold text-[#123e7c] focus:not-sr-only`}
       >
         Skip to content
       </a>
 
-      <header className="absolute inset-x-0 top-0 z-10 text-white">
+      <header className={`${styles.onSky} absolute inset-x-0 top-0 z-10 text-white`}>
         <div className="mx-auto flex w-full max-w-6xl items-center px-6 py-6 lg:px-8">
           <Link
             href="/"
@@ -126,7 +127,6 @@ export default function PegCastPage() {
                   alt=""
                   width={240}
                   height={240}
-                  sizes="72px"
                   priority
                   className="size-16 sm:size-[4.5rem]"
                 />
@@ -159,7 +159,6 @@ export default function PegCastPage() {
                 alt={homeAlt}
                 width={675}
                 height={1380}
-                sizes="(min-width: 1024px) 320px, (min-width: 640px) 288px, 256px"
                 priority
                 className={`${styles.phone} h-auto w-full`}
               />
@@ -170,175 +169,171 @@ export default function PegCastPage() {
         </div>
 
         <div className={styles.sheet}>
-            <section
-              aria-labelledby="times-heading"
-              className="mx-auto w-full max-w-6xl px-6 pb-16 pt-16 lg:px-8 lg:pb-20 lg:pt-20"
-            >
-              <div className="grid gap-10 md:grid-cols-2 md:gap-16">
-                <div className="max-w-xl">
-                  <h2
-                    id="times-heading"
-                    className="text-3xl font-extrabold tracking-tight sm:text-4xl"
-                  >
-                    Three times for every load
-                  </h2>
-                  <p className={`${styles.muted} mt-4 text-lg leading-relaxed`}>
-                    PegCast looks at rain, wind, humidity and daylight, hour by
-                    hour. Then it tells you what to do and when.
-                  </p>
-                </div>
-                <ol className={`${styles.steps} grid gap-5`}>
-                  {steps.map(({ label, text, className, icon: Icon }) => (
-                    <li key={label} className="relative flex items-center gap-4">
-                      <span className={`${styles.step} ${className}`}>
-                        <Icon />
-                      </span>
-                      <span>
-                        <span className="block text-xl font-bold">{label}</span>
-                        <span className={`${styles.muted} block text-base`}>
-                          {text}
-                        </span>
-                      </span>
-                    </li>
-                  ))}
-                </ol>
-              </div>
-            </section>
-
-            <section
-              aria-labelledby="features-heading"
-              className="mx-auto w-full max-w-6xl px-6 pb-16 lg:px-8 lg:pb-24"
-            >
-              <h2
-                id="features-heading"
-                className="text-3xl font-extrabold tracking-tight sm:text-4xl"
-              >
-                What PegCast does
-              </h2>
-
-              <div className="mt-12 grid items-center gap-12 md:grid-cols-[auto_1fr] md:gap-20">
-                <div className="mx-auto w-60 sm:w-64 md:order-none">
-                  <ThemedImage
-                    light="/pegcast/load-plan-light.webp"
-                    dark="/pegcast/load-plan-dark.webp"
-                    alt={loadPlanAlt}
-                    width={675}
-                    height={1380}
-                    sizes="256px"
-                    className={`${styles.phone} h-auto w-full`}
-                  />
-                </div>
-                <div className="grid max-w-xl gap-9">
-                  <Feature title="Hang now in one tap">
-                    When the advice says Hang now, tap I&apos;ve hung it out.
-                    PegCast saves the load and tells you when to bring it in.
-                  </Feature>
-                  <Feature title="The Load Plan">
-                    Plan a load for later. PegCast checks the weather again
-                    before you hang it out. While the washing is out, Check
-                    again tells you if the time to bring it in has changed.
-                  </Feature>
-                  <Feature title="Reminders">
-                    Get a reminder at the Hang time, and another when it is time
-                    to bring the washing in.
-                  </Feature>
-                </div>
-              </div>
-
-              <div className="mt-20 grid items-center gap-12 md:grid-cols-2 md:gap-20">
-                <div className="grid max-w-xl gap-9">
-                  <Feature title="Widget and Live Activity">
-                    See when to bring the washing in on your Home Screen and
-                    Lock Screen, without opening the app.
-                  </Feature>
-                  <Feature title="Siri">
-                    Say &ldquo;Check drying advice in PegCast&rdquo; or
-                    &ldquo;Open my Load Plan in PegCast&rdquo;.
-                  </Feature>
-                </div>
-                <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end md:flex-col md:items-start lg:flex-row lg:items-end">
-                  <ThemedImage
-                    light="/pegcast/widget-light.webp"
-                    dark="/pegcast/widget-dark.webp"
-                    alt={widgetAlt}
-                    width={334}
-                    height={334}
-                    sizes="170px"
-                    className={`${styles.tile} h-auto w-[170px]`}
-                  />
-                  <ThemedImage
-                    light="/pegcast/live-activity-light.webp"
-                    dark="/pegcast/live-activity-dark.webp"
-                    alt={liveActivityAlt}
-                    width={710}
-                    height={257}
-                    sizes="(min-width: 640px) 340px, 100vw"
-                    className={`${styles.tile} h-auto w-full max-w-[340px]`}
-                  />
-                </div>
-              </div>
-
-              <div className="mt-20 grid items-center gap-12 md:grid-cols-[1fr_1fr] md:gap-20">
-                <div
-                  className={`${styles.panel} mx-auto w-full max-w-md overflow-hidden rounded-[20px] p-2 md:order-none`}
+          <section
+            aria-labelledby="times-heading"
+            className="mx-auto w-full max-w-6xl px-6 pb-16 pt-16 lg:px-8 lg:pb-20 lg:pt-20"
+          >
+            <div className="grid gap-10 md:grid-cols-2 md:gap-16">
+              <div className="max-w-xl">
+                <h2
+                  id="times-heading"
+                  className="text-3xl font-extrabold tracking-tight sm:text-4xl"
                 >
-                  <ThemedImage
-                    light="/pegcast/weather-chart-light.webp"
-                    dark="/pegcast/weather-chart-dark.webp"
-                    alt={chartAlt}
-                    width={780}
-                    height={673}
-                    sizes="(min-width: 768px) 440px, 100vw"
-                    className="h-auto w-full rounded-[14px]"
-                  />
-                </div>
-                <div className="max-w-xl">
-                  <Feature title="The weather chart">
-                    Two small charts show the chance of rain and the wind for
-                    each hour. Daylight hours are shaded.
-                  </Feature>
-                </div>
+                  Three times for every load
+                </h2>
+                <p className={`${styles.muted} mt-4 text-lg leading-relaxed`}>
+                  PegCast looks at rain, wind, humidity and daylight, hour by
+                  hour. Then it tells you what to do and when.
+                </p>
               </div>
-            </section>
+              <ol className={`${styles.steps} grid gap-5`}>
+                {steps.map(({ label, text, className, icon: Icon }) => (
+                  <li key={label} className="relative flex items-center gap-4">
+                    <span className={`${styles.step} ${className}`}>
+                      <Icon />
+                    </span>
+                    <span>
+                      <span className="block text-xl font-bold">{label}</span>
+                      <span className={`${styles.muted} block text-base`}>
+                        {text}
+                      </span>
+                    </span>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </section>
 
-            <section
-              aria-labelledby="about-heading"
-              className="mx-auto w-full max-w-6xl px-6 pb-20 lg:px-8 lg:pb-28"
+          <section
+            aria-labelledby="features-heading"
+            className="mx-auto w-full max-w-6xl px-6 pb-16 lg:px-8 lg:pb-24"
+          >
+            <h2
+              id="features-heading"
+              className="text-3xl font-extrabold tracking-tight sm:text-4xl"
             >
-              <div className={`${styles.panel} grid gap-8 rounded-[28px] p-7 sm:p-10 md:grid-cols-2`}>
-                <div>
-                  <h2 id="about-heading" className="text-2xl font-extrabold">
-                    In private testing
-                  </h2>
-                  <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
-                    PegCast is not on the App Store yet. Its advice is
-                    experimental.
-                  </p>
-                  <p className="mt-5 text-lg font-bold">
-                    Made by{" "}
-                    <Link href="/" className={styles.accentLink}>
-                      Dean Whittaker
-                    </Link>
-                  </p>
-                </div>
-                <div>
-                  <h2 className="text-2xl font-extrabold">Privacy</h2>
-                  <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
-                    No account, no adverts or tracking, and your plans stay on
-                    your iPhone.
-                    {privacyNoticeUrl && (
-                      <>
-                        {" "}
-                        <a href={privacyNoticeUrl} className={styles.accentLink}>
-                          Read the PegCast privacy notice
-                        </a>
-                        .
-                      </>
-                    )}
-                  </p>
-                </div>
+              What PegCast does
+            </h2>
+
+            <div className="mt-12 grid items-center gap-12 md:grid-cols-[auto_1fr] md:gap-20">
+              <div className="mx-auto w-60 sm:w-64">
+                <ThemedImage
+                  light="/pegcast/load-plan-light.webp"
+                  dark="/pegcast/load-plan-dark.webp"
+                  alt={loadPlanAlt}
+                  width={675}
+                  height={1380}
+                  className={`${styles.phone} h-auto w-full`}
+                />
               </div>
-            </section>
+              <div className="grid max-w-xl gap-9">
+                <Feature title="Hang now in one tap">
+                  When the advice says Hang now, tap I&apos;ve hung it out.
+                  PegCast saves the load and tells you when to bring it in.
+                </Feature>
+                <Feature title="The Load Plan">
+                  Plan a load for later. PegCast checks the weather again
+                  before you hang it out. While the washing is out, Check
+                  again tells you if the time to bring it in has changed.
+                </Feature>
+                <Feature title="Reminders">
+                  Turn on a reminder for when to bring the washing in. A load
+                  you plan for later can also remind you at its Hang time.
+                </Feature>
+              </div>
+            </div>
+
+            <div className="mt-20 grid items-center gap-12 md:grid-cols-2 md:gap-20">
+              <div className="grid max-w-xl gap-9">
+                <Feature title="Widget and Live Activity">
+                  See when to bring the washing in on your Home Screen and
+                  Lock Screen, without opening the app.
+                </Feature>
+                <Feature title="Siri">
+                  Say &ldquo;Check drying advice in PegCast&rdquo; or
+                  &ldquo;Open my Load Plan in PegCast&rdquo;.
+                </Feature>
+              </div>
+              <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end md:flex-col md:items-start lg:flex-row lg:items-end">
+                <ThemedImage
+                  light="/pegcast/widget-light.webp"
+                  dark="/pegcast/widget-dark.webp"
+                  alt={widgetAlt}
+                  width={334}
+                  height={334}
+                  className={`${styles.tile} h-auto w-[170px]`}
+                />
+                <ThemedImage
+                  light="/pegcast/live-activity-light.webp"
+                  dark="/pegcast/live-activity-dark.webp"
+                  alt={liveActivityAlt}
+                  width={710}
+                  height={257}
+                  className={`${styles.tile} h-auto w-full max-w-[340px]`}
+                />
+              </div>
+            </div>
+
+            <div className="mt-20 grid items-center gap-12 md:grid-cols-[1fr_1fr] md:gap-20">
+              <div
+                className={`${styles.panel} mx-auto w-full max-w-md overflow-hidden rounded-[20px] p-2`}
+              >
+                <ThemedImage
+                  light="/pegcast/weather-chart-light.webp"
+                  dark="/pegcast/weather-chart-dark.webp"
+                  alt={chartAlt}
+                  width={780}
+                  height={673}
+                  className="h-auto w-full rounded-[14px]"
+                />
+              </div>
+              <div className="max-w-xl">
+                <Feature title="The weather chart">
+                  Two small charts show the chance of rain and the wind for
+                  each hour. Daylight hours are shaded.
+                </Feature>
+              </div>
+            </div>
+          </section>
+
+          <section
+            aria-labelledby="about-heading"
+            className="mx-auto w-full max-w-6xl px-6 pb-20 lg:px-8 lg:pb-28"
+          >
+            <div className={`${styles.panel} grid gap-8 rounded-[28px] p-7 sm:p-10 md:grid-cols-2`}>
+              <div>
+                <h2 id="about-heading" className="text-2xl font-extrabold">
+                  In private testing
+                </h2>
+                <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
+                  PegCast is not on the App Store yet. Its advice is
+                  experimental.
+                </p>
+                <p className="mt-5 text-lg font-bold">
+                  Made by{" "}
+                  <Link href="/" className={styles.accentLink}>
+                    Dean Whittaker
+                  </Link>
+                </p>
+              </div>
+              <div>
+                <h2 className="text-2xl font-extrabold">Privacy</h2>
+                <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
+                  No account, no adverts or tracking, and your plans stay on
+                  your iPhone.
+                  {privacyNoticeUrl && (
+                    <>
+                      {" "}
+                      <a href={privacyNoticeUrl} className={styles.accentLink}>
+                        Read the PegCast privacy notice
+                      </a>
+                      .
+                    </>
+                  )}
+                </p>
+              </div>
+            </div>
+          </section>
         </div>
       </main>
 

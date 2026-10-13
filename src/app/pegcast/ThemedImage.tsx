@@ -6,7 +6,6 @@ type ThemedImageProps = {
   alt: string;
   width: number;
   height: number;
-  sizes: string;
   className?: string;
   priority?: boolean;
 };
@@ -18,13 +17,12 @@ export default function ThemedImage({
   alt,
   width,
   height,
-  sizes,
   className,
   priority = false,
 }: ThemedImageProps) {
-  const common = { alt, width, height, sizes };
-  const { props: darkProps } = getImageProps({ ...common, src: dark });
-  const { props: lightProps } = getImageProps({ ...common, src: light, priority });
+  const shared = { alt, width, height };
+  const { props: darkProps } = getImageProps({ ...shared, src: dark });
+  const { props: lightProps } = getImageProps({ ...shared, src: light, priority });
 
   return (
     <picture>

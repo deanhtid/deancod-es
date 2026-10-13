@@ -84,7 +84,10 @@
   );
 }
 
-.sky :focus-visible {
+/* Focus rings on the sky are white, so they keep 3:1 against every sky stop. */
+.sky :focus-visible,
+.onSky:focus-visible,
+.onSky :focus-visible {
   outline-color: #ffffff;
 }
 

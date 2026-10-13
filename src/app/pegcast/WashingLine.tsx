@@ -11,8 +11,13 @@ const garments = [
 
 type Garment = (typeof garments)[number];
 
-/** The line's height at a horizontal fraction, as the app's quadratic curve gives it. */
-const lineHeight = (fraction: number) => 18 + 80 * fraction * (1 - fraction);
+/** The cord hangs from 18 px at each end and its curve's control point is 40 px lower. */
+const cordEnd = 18;
+const cordSag = 40;
+const cordPath = `M0 ${cordEnd} Q50 ${cordEnd + cordSag} 100 ${cordEnd}`;
+
+/** How far below the top the cord is at a horizontal fraction of the width. */
+const cordDrop = (fraction: number) => cordEnd + 2 * cordSag * fraction * (1 - fraction);
 
 function GarmentShape({ kind, colour, width, height }: Garment) {
   switch (kind) {
@@ -50,7 +55,7 @@ export default function WashingLine() {
     <div className={styles.line} aria-hidden="true">
       <svg className={styles.cord} viewBox="0 0 100 110" preserveAspectRatio="none">
         <path
-          d="M0 18 Q50 58 100 18"
+          d={cordPath}
           fill="none"
           vectorEffect="non-scaling-stroke"
         />
@@ -61,7 +66,7 @@ export default function WashingLine() {
           className={styles.garment}
           style={{
             left: `${garment.position * 100}%`,
-            top: `calc(${lineHeight(garment.position)}px * var(--line-scale))`,
+            top: `calc(${cordDrop(garment.position)}px * var(--line-scale))`,
             animationDelay: `${-garment.phase}s`,
           }}
         >
