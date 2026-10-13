@@ -140,7 +140,8 @@ The `out/` directory contains all static files ready for deployment to:
 ### Available Scripts
 
 - `pnpm dev` - Start development server
-- `pnpm build` - Build for production
+- `pnpm typecheck` - Check types with TypeScript 7
+- `pnpm build` - Check types, then build for production
 - `pnpm start` - Preview production build
 - `pnpm lint` - Run ESLint
 
@@ -148,7 +149,7 @@ The `out/` directory contains all static files ready for deployment to:
 
 - **Framework**: Next.js 16 with App Router
 - **Styling**: Tailwind CSS 4
-- **Language**: TypeScript
+- **Language**: TypeScript 7 (`tsc`); ESLint uses the TypeScript 6 API, because TypeScript 7 has no JavaScript API
 - **Package Manager**: pnpm
 - **Build Output**: Static HTML/CSS/JS
 
