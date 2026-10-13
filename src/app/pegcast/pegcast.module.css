@@ -1,0 +1,253 @@
+/*
+ * PegCast's Breeze tokens (PegCast ADR 0003, BreezeTokens.swift).
+ * White text sits only on the top six sky stops. The light bottom row stays behind the washing line.
+ */
+.page {
+  --sky-0: #123e7c;
+  --sky-1: #1a4f95;
+  --sky-2: #2260a8;
+  --sky-3: #1c5a9e;
+  --sky-4: #2468ae;
+  --sky-5: #2c72b5;
+  --sky-6: #5fa3d6;
+  --sky-7: #7db8e0;
+  --sky-8: #f4c98a;
+  --accent: #1a5fa8;
+  --muted: #5b5b61;
+  --label: #000000;
+  --sheet: #ffffff;
+  --panel: #f2f2f7;
+  --hang-step: #1a5fa8;
+  --dry-by-step: #d97805;
+  --bring-in-step: #e0543d;
+  --pill-shade: rgb(0 0 0 / 0.22);
+  --line-scale: 1;
+  /* The light band holds the washing line and the part of the sky under the sheet. */
+  --band: calc(150px * var(--line-scale) + 50px);
+
+  font-family: ui-rounded, var(--font-nunito), system-ui, sans-serif;
+  color: var(--label);
+  background: var(--sheet);
+  color-scheme: light dark;
+}
+
+@media (prefers-color-scheme: dark) {
+  .page {
+    --sky-0: #0a1230;
+    --sky-1: #111a45;
+    --sky-2: #1a1f5a;
+    --sky-3: #16205a;
+    --sky-4: #221f66;
+    --sky-5: #2b2470;
+    --sky-6: #3a2c7a;
+    --sky-7: #4b3585;
+    --sky-8: #6a3d8c;
+    --accent: #8ec5ff;
+    --muted: #a8a8ae;
+    --label: #ffffff;
+    --sheet: #000000;
+    --panel: #1c1c1e;
+  }
+}
+
+@media (min-width: 768px) {
+  .page {
+    --line-scale: 1.3;
+  }
+}
+
+.page ::selection {
+  background: color-mix(in srgb, var(--accent) 30%, transparent);
+  color: inherit;
+}
+
+.page :focus-visible {
+  outline: 3px solid var(--accent);
+  outline-offset: 3px;
+}
+
+/* The sky: a full-bleed gradient that drifts slowly, as in the app. */
+.sky {
+  position: relative;
+  isolation: isolate;
+  overflow: hidden;
+  color: #ffffff;
+  background: linear-gradient(
+    to bottom,
+    var(--sky-0) 0%,
+    var(--sky-1) 30%,
+    var(--sky-2) 55%,
+    var(--sky-5) calc(100% - var(--band) - 40px),
+    var(--sky-6) calc(100% - var(--band) + 60px),
+    var(--sky-7) calc(100% - var(--band) * 0.45),
+    var(--sky-8) 100%
+  );
+}
+
+.sky :focus-visible {
+  outline-color: #ffffff;
+}
+
+.sky::before {
+  position: absolute;
+  inset: -20% -40% 0;
+  z-index: -1;
+  content: "";
+  pointer-events: none;
+  background:
+    radial-gradient(40% 50% at 25% 35%, var(--sky-4), transparent 70%),
+    radial-gradient(35% 45% at 75% 20%, var(--sky-3), transparent 70%);
+  animation: drift 18s ease-in-out infinite alternate;
+}
+
+@keyframes drift {
+  from {
+    translate: -8% 0;
+  }
+  to {
+    translate: 8% 0;
+  }
+}
+
+.pill {
+  background: var(--pill-shade);
+}
+
+.badge {
+  display: grid;
+  place-items: center;
+  border-radius: 9999px;
+  background: #ffffff;
+}
+
+/* The washing line crosses the sky's light band. */
+.line {
+  position: relative;
+  height: calc(110px * var(--line-scale));
+  margin-top: 32px;
+  margin-bottom: calc(34px + 18px * var(--line-scale));
+}
+
+.cord {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  overflow: visible;
+}
+
+.cord path {
+  stroke: rgb(255 255 255 / 0.85);
+  stroke-width: 2px;
+  stroke-linecap: round;
+}
+
+.garment {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: -6px;
+  translate: -50% 0;
+  scale: var(--line-scale);
+  transform-origin: top center;
+  filter: drop-shadow(0 3px 4px rgb(0 0 0 / 0.18));
+  animation: sway 4.5s ease-in-out infinite alternate;
+}
+
+.garment svg {
+  margin-top: -4px;
+}
+
+.peg {
+  position: relative;
+  z-index: 1;
+  width: 6px;
+  height: 14px;
+  border-radius: 2px;
+  background: #8c5c3d;
+}
+
+@keyframes sway {
+  from {
+    rotate: -5deg;
+  }
+  to {
+    rotate: 5deg;
+  }
+}
+
+/* The content sheet slides up over the sky's lower edge, with 34 px top corners. */
+.sheet {
+  position: relative;
+  margin-top: -34px;
+  border-radius: 34px 34px 0 0;
+  background: var(--sheet);
+}
+
+.muted {
+  color: var(--muted);
+}
+
+.accentLink {
+  color: var(--accent);
+  text-decoration: underline;
+  text-decoration-thickness: 1.5px;
+  text-underline-offset: 3px;
+}
+
+.panel {
+  background: var(--panel);
+}
+
+/* The three times are steps joined by a 3 px line, because they happen in this order. */
+.steps {
+  position: relative;
+}
+
+.steps::before {
+  position: absolute;
+  top: 22px;
+  bottom: 22px;
+  left: 21px;
+  width: 3px;
+  content: "";
+  background: color-mix(in srgb, var(--label) 18%, transparent);
+}
+
+.step {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  flex: none;
+  border-radius: 9999px;
+  color: #ffffff;
+}
+
+.hangStep {
+  background: var(--hang-step);
+}
+
+.dryByStep {
+  background: var(--dry-by-step);
+}
+
+.bringInStep {
+  background: var(--bring-in-step);
+}
+
+.phone {
+  filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.28));
+}
+
+.tile {
+  filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.18));
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sky::before,
+  .garment {
+    animation: none;
+  }
+}

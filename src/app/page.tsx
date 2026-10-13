@@ -8,6 +8,7 @@ import {
   SignalIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import SiteFooter from "@/components/SiteFooter";
 
 const capabilities = [
   {
@@ -275,12 +276,7 @@ export default function Home() {
         </section>
       </main>
 
-      <footer className="border-t border-white/10">
-        <div className="mx-auto flex w-full max-w-6xl flex-col gap-2 px-6 py-7 text-sm text-slate-500 sm:flex-row sm:items-center sm:justify-between lg:px-8">
-          <p>© {new Date().getFullYear()} Dean Whittaker</p>
-          <p>Senior Platform Engineer · Sunderland, UK</p>
-        </div>
-      </footer>
+      <SiteFooter />
 
       <script
         type="application/ld+json"

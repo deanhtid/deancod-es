@@ -36,10 +36,13 @@ deancod-es/
 │   ├── app/
 │   │   ├── layout.tsx     # Main layout with metadata and fonts
 │   │   ├── page.tsx       # About Me page content
+│   │   ├── pegcast/       # The PegCast app page at /pegcast/
 │   │   └── globals.css    # Global Tailwind styles
+│   └── components/        # Parts that both pages share, such as the footer
 ├── public/
 │   ├── avatar.jpg         # Profile photo
-│   └── og.png             # Social-sharing preview
+│   ├── og.png             # Social-sharing preview
+│   └── pegcast/           # PegCast screenshots and its social-sharing preview
 ├── out/                   # Generated static files (after build)
 ├── next.config.ts         # Next.js config for static export
 ├── tailwind.config.ts     # Tailwind CSS configuration
