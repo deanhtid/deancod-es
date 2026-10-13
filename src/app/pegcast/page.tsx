@@ -353,6 +353,12 @@ export default function PegCastPage() {
                   No account, no adverts or tracking, and your plans stay on
                   your iPhone.
                 </p>
+                <p className="mt-5 text-lg font-bold">
+                  {/* A static page from PegCast, not a route, so a plain link loads it. */}
+                  <a href="/pegcast/privacy/" className={styles.accentLink}>
+                    Read the privacy notice
+                  </a>
+                </p>
               </div>
             </div>
           </section>

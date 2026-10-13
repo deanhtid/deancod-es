@@ -43,6 +43,7 @@ deancod-es/
 │   ├── avatar.jpg         # Profile photo
 │   ├── og.png             # Social-sharing preview
 │   └── pegcast/           # PegCast screenshots and its social-sharing preview
+│       └── privacy/       # The PegCast privacy and support page. PegCast generates it: do not edit
 ├── out/                   # Generated static files (after build)
 ├── next.config.ts         # Next.js config for static export
 └── README.md             # This file
