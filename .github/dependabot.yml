@@ -1,0 +1,26 @@
+version: 2
+# Each ecosystem gets one grouped PR for minor and patch updates, and one PR for each major update.
+updates:
+  - package-ecosystem: npm
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # @types/node follows the Node.js runtime major (24), not the newest types.
+      - dependency-name: "@types/node"
+        update-types:
+          - version-update:semver-major
+  - package-ecosystem: github-actions
+    directory: /
+    schedule:
+      interval: weekly
+    groups:
+      minor-and-patch:
+        update-types:
+          - minor
+          - patch
