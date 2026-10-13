@@ -83,7 +83,7 @@ export default function Home() {
           className="group flex items-center gap-3 rounded-full focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
           aria-label="Dean Whittaker, home"
         >
-          <span className="grid size-10 place-items-center rounded-full border border-white/15 bg-white/[0.06] text-sm font-bold tracking-wider text-white transition group-hover:border-cyan-300/50 group-hover:text-cyan-200">
+          <span className="grid size-10 place-items-center rounded-full border border-white/15 bg-white/6 text-sm font-bold tracking-wider text-white transition group-hover:border-cyan-300/50 group-hover:text-cyan-200">
             DW
           </span>
           <span className="hidden text-sm font-medium text-slate-300 sm:block">
@@ -95,7 +95,7 @@ export default function Home() {
           href="https://www.linkedin.com/in/dean-whittaker/"
           target="_blank"
           rel="noopener noreferrer"
-          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
+          className="inline-flex items-center gap-2 rounded-full border border-white/15 bg-white/5 px-4 py-2 text-sm font-semibold text-slate-200 transition hover:border-cyan-300/50 hover:bg-cyan-300/10 hover:text-white focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-300"
         >
           LinkedIn
           <ArrowUpRightIcon className="size-4" aria-hidden="true" />
@@ -132,7 +132,7 @@ export default function Home() {
               </a>
               <a
                 href="mailto:dean@deancod.es"
-                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/[0.05] px-5 py-3 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
+                className="inline-flex items-center justify-center gap-2 rounded-full border border-white/15 bg-white/5 px-5 py-3 text-sm font-semibold text-white transition hover:border-violet-300/50 hover:bg-violet-300/10 focus:outline-none focus-visible:ring-2 focus-visible:ring-violet-300"
               >
                 <EnvelopeIcon className="size-4" aria-hidden="true" />
                 dean@deancod.es
@@ -146,9 +146,9 @@ export default function Home() {
           </div>
 
           <div className="relative mx-auto w-full max-w-sm lg:max-w-none">
-            <div className="profile-glow absolute inset-0 rounded-[2rem]" />
-            <div className="relative overflow-hidden rounded-[2rem] border border-white/15 bg-slate-900/70 p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur">
-              <div className="relative aspect-square overflow-hidden rounded-[1.45rem] bg-gradient-to-br from-slate-800 to-slate-950">
+            <div className="profile-glow absolute inset-0 rounded-4xl" />
+            <div className="relative overflow-hidden rounded-4xl border border-white/15 bg-slate-900/70 p-5 shadow-2xl shadow-cyan-950/30 backdrop-blur">
+              <div className="relative aspect-square overflow-hidden rounded-[1.45rem] bg-linear-to-br from-slate-800 to-slate-950">
                 <Image
                   src="/avatar.jpg"
                   alt="Dean Whittaker"
@@ -176,7 +176,7 @@ export default function Home() {
 
         <section
           aria-labelledby="capabilities-heading"
-          className="border-y border-white/10 bg-white/[0.025]"
+          className="border-y border-white/10 bg-white/2.5"
         >
           <div className="mx-auto w-full max-w-6xl px-6 py-20 lg:px-8 lg:py-24">
             <div className="max-w-2xl">
@@ -202,7 +202,7 @@ export default function Home() {
                   key={title}
                   className="rounded-3xl border border-white/10 bg-slate-900/55 p-7 transition hover:-translate-y-1 hover:border-cyan-300/25 hover:bg-slate-900/80"
                 >
-                  <div className="grid size-11 place-items-center rounded-2xl border border-cyan-300/20 bg-cyan-300/[0.08] text-cyan-200">
+                  <div className="grid size-11 place-items-center rounded-2xl border border-cyan-300/20 bg-cyan-300/8 text-cyan-200">
                     <Icon className="size-6" aria-hidden="true" />
                   </div>
                   <h3 className="mt-6 text-xl font-semibold text-white">{title}</h3>
@@ -245,7 +245,7 @@ export default function Home() {
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-6 pb-24 lg:px-8 lg:pb-32">
-          <div className="rounded-[2rem] border border-white/10 bg-gradient-to-br from-cyan-300/[0.08] via-white/[0.025] to-violet-400/[0.08] p-8 sm:p-10 lg:p-12">
+          <div className="rounded-4xl border border-white/10 bg-linear-to-br from-cyan-300/8 via-white/2.5 to-violet-400/8 p-8 sm:p-10 lg:p-12">
             <p className="text-sm font-semibold uppercase tracking-[0.18em] text-cyan-300">
               Core strengths
             </p>

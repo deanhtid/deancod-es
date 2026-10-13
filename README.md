@@ -45,7 +45,6 @@ deancod-es/
 │   └── pegcast/           # PegCast screenshots and its social-sharing preview
 ├── out/                   # Generated static files (after build)
 ├── next.config.ts         # Next.js config for static export
-├── tailwind.config.ts     # Tailwind CSS configuration
 └── README.md             # This file
 ```
 
@@ -117,7 +116,7 @@ jobs:
       - uses: actions/checkout@v3
       - uses: actions/setup-node@v3
         with:
-          node-version: "18"
+          node-version: "24"
           cache: "npm"
       - run: npm install
       - run: npm run build
@@ -147,17 +146,17 @@ The `out/` directory contains all static files ready for deployment to:
 
 ### Tech Stack
 
-- **Framework**: Next.js 15 with App Router
-- **Styling**: Tailwind CSS
+- **Framework**: Next.js 16 with App Router
+- **Styling**: Tailwind CSS 4
 - **Language**: TypeScript
 - **Package Manager**: pnpm
 - **Build Output**: Static HTML/CSS/JS
 
 ## 📱 Browser Support
 
-- Chrome/Edge 88+
-- Firefox 85+
-- Safari 14+
+- Chrome/Edge 111+
+- Firefox 128+
+- Safari 16.4+
 - Mobile browsers (iOS Safari, Chrome Mobile)
 
 ## 📄 License

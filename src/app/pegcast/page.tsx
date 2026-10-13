@@ -149,7 +149,7 @@ export default function PegCastPage() {
                   width={240}
                   height={240}
                   priority
-                  className="size-16 sm:size-[4.5rem]"
+                  className="size-16 sm:size-18"
                 />
                 <h1
                   id="pegcast-heading"
