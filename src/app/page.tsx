@@ -1,4 +1,5 @@
 import {
+  ArrowRightIcon,
   ArrowUpRightIcon,
   CloudIcon,
   CodeBracketSquareIcon,
@@ -8,6 +9,7 @@ import {
   SignalIcon,
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
+import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
 
 const capabilities = [
@@ -242,6 +244,64 @@ export default function Home() {
               </li>
             ))}
           </ol>
+        </section>
+
+        <section
+          aria-labelledby="projects-heading"
+          className="mx-auto grid w-full max-w-6xl gap-10 px-6 pb-20 lg:grid-cols-[0.78fr_1.22fr] lg:items-center lg:gap-20 lg:px-8 lg:pb-28"
+        >
+          <div>
+            <p className="text-sm font-semibold uppercase tracking-[0.18em] text-violet-300">
+              Personal projects
+            </p>
+            <h2
+              id="projects-heading"
+              className="mt-4 text-balance text-3xl font-semibold tracking-tight text-white sm:text-4xl"
+            >
+              What I build in my own time.
+            </h2>
+          </div>
+
+          <article className="group relative rounded-3xl border border-white/10 bg-slate-900/55 p-7 transition hover:border-cyan-300/25 hover:bg-slate-900/80 has-focus-visible:ring-2 has-focus-visible:ring-cyan-300">
+            <div className="flex items-center gap-4">
+              {/* The app icon sits beside the name "PegCast", so it is decoration. */}
+              <Image
+                src="/pegcast/app-icon-dark.webp"
+                alt=""
+                width={240}
+                height={240}
+                className="size-14 shrink-0 rounded-2xl"
+                sizes="56px"
+              />
+              <h3 className="flex-1 text-xl font-semibold text-white">
+                {/* The ::after layer makes the whole card the link target. */}
+                <Link
+                  href="/pegcast/"
+                  className="after:absolute after:inset-0 after:rounded-3xl focus:outline-none"
+                >
+                  PegCast
+                </Link>
+              </h3>
+              <ArrowRightIcon
+                className="size-5 shrink-0 text-cyan-300 transition group-hover:translate-x-1"
+                aria-hidden="true"
+              />
+            </div>
+            <p className="mt-5 leading-7 text-slate-400">
+              An iPhone app that tells you when to hang the washing out, and
+              when to bring it in.
+            </p>
+            <ul className="mt-5 flex flex-wrap gap-2" aria-label="About PegCast">
+              {["iPhone app", "In private testing"].map((fact) => (
+                <li
+                  key={fact}
+                  className="rounded-full border border-white/10 bg-slate-950/55 px-3 py-1 text-sm font-medium text-slate-200"
+                >
+                  {fact}
+                </li>
+              ))}
+            </ul>
+          </article>
         </section>
 
         <section className="mx-auto w-full max-w-6xl px-6 pb-24 lg:px-8 lg:pb-32">
