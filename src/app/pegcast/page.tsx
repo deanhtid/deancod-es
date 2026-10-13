@@ -2,7 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
 import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
-import ThemedImage from "./ThemedImage";
+import ThemedImage, { type Themed } from "./ThemedImage";
 import WashingLine from "./WashingLine";
 import styles from "./pegcast.module.css";
 
@@ -54,19 +54,38 @@ export const viewport: Viewport = {
   ],
 };
 
-/** The PegCast privacy notice. It has no public address until the app's site is published. */
-const privacyNoticeUrl: string | null = null;
-
-const homeAlt =
-  "PegCast Home screen for Sunderland. The sky says Hang now, bring in by 7:00 pm, because moving air helps drying. Below are three times for today: hang at 9:00 am, dry by about 10:30 to 11:30 am, and bring in by 7:00 pm. The button at the bottom says I've hung it out.";
-const loadPlanAlt =
-  "The Load Plan screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Two switches, both off, set a reminder at 7:00 pm and show the plan on the Lock Screen.";
-const widgetAlt =
-  "A small Home Screen widget on a blue sky. It says On the line, bring in by today, 7:00 pm, saved and checked at 9:00 am.";
-const liveActivityAlt =
-  "A Live Activity on the Lock Screen. It says bring in by today, 7:00 pm, 10 hours, 0 minutes left, saved and checked at 9:00 am.";
-const chartAlt =
-  "Weather details with two charts across the day. The rain chance is 0% in every hour. The wind is 7 mph in every hour. A shaded band marks the daylight hours.";
+const homeAlt: Themed = {
+  light:
+    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now, bring in by 7:00 pm, because moving air helps drying. Below, on a white sheet, are three times for today: hang at 9:00 am, dry by about 10:30 to 11:30 am, and bring in by 7:00 pm. The button at the bottom says I've hung it out.",
+  dark:
+    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now, bring in by 7:00 pm, because moving air helps drying. Below, on a black sheet, are three times for today: hang at 9:00 am, dry by about 10:30 to 11:30 am, and bring in by 7:00 pm. The button at the bottom says I've hung it out.",
+};
+const loadPlanAlt: Themed = {
+  light:
+    "The Load Plan screen, with a blue card on a white screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Two switches, both off, set a reminder at 7:00 pm and show the plan on the Lock Screen.",
+  dark:
+    "The Load Plan screen, with a navy card on a black screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Two switches, both off, set a reminder at 7:00 pm and show the plan on the Lock Screen.",
+};
+const widgetAlt: Themed = {
+  light:
+    "A small Home Screen widget on a blue day sky. It says On the line, bring in by today, 7:00 pm, saved and checked at 9:00 am.",
+  dark:
+    "A small Home Screen widget on a navy and purple night sky. It says On the line, bring in by today, 7:00 pm, saved and checked at 9:00 am.",
+};
+const liveActivityAlt: Themed = {
+  light:
+    "A Live Activity on the Lock Screen, on a blue day sky. It says bring in by today, 7:00 pm, 10 hours, 0 minutes left, saved and checked at 9:00 am.",
+  dark:
+    "A Live Activity on the Lock Screen, on a navy and purple night sky. It says bring in by today, 7:00 pm, 10 hours, 0 minutes left, saved and checked at 9:00 am.",
+};
+const chartAlt: Themed = {
+  light:
+    "Weather details on a white background, with two charts across the day. The rain chance is 0% in every hour. The wind is 7 mph in every hour. A pale orange band marks the daylight hours.",
+  dark:
+    "Weather details on a black background, with two charts across the day. The rain chance is 0% in every hour. The wind is 7 mph in every hour. A dark brown band marks the daylight hours.",
+};
+/** The app icon sits beside the name "PegCast", so it is decoration. */
+const decorative: Themed = { light: "", dark: "" };
 
 const steps = [
   {
@@ -122,9 +141,11 @@ export default function PegCastPage() {
             <div className="max-w-xl">
               <div className="flex items-center gap-4">
                 <ThemedImage
-                  light="/pegcast/app-icon-light.webp"
-                  dark="/pegcast/app-icon-dark.webp"
-                  alt=""
+                  src={{
+                    light: "/pegcast/app-icon-light.webp",
+                    dark: "/pegcast/app-icon-dark.webp",
+                  }}
+                  alt={decorative}
                   width={240}
                   height={240}
                   priority
@@ -152,15 +173,17 @@ export default function PegCastPage() {
               </p>
             </div>
 
-            <div className="mx-auto w-64 sm:w-72 lg:w-80">
+            <div className={`${styles.frame} mx-auto w-64 sm:w-72 lg:w-80`}>
               <ThemedImage
-                light="/pegcast/home-light.webp"
-                dark="/pegcast/home-dark.webp"
+                src={{
+                  light: "/pegcast/home-light.webp",
+                  dark: "/pegcast/home-dark.webp",
+                }}
                 alt={homeAlt}
-                width={675}
-                height={1380}
+                width={585}
+                height={1266}
                 priority
-                className={`${styles.phone} h-auto w-full`}
+                className="h-auto w-full"
               />
             </div>
           </section>
@@ -216,14 +239,16 @@ export default function PegCastPage() {
             </h2>
 
             <div className="mt-12 grid items-center gap-12 md:grid-cols-[auto_1fr] md:gap-20">
-              <div className="mx-auto w-60 sm:w-64">
+              <div className={`${styles.frame} mx-auto w-60 sm:w-64`}>
                 <ThemedImage
-                  light="/pegcast/load-plan-light.webp"
-                  dark="/pegcast/load-plan-dark.webp"
+                  src={{
+                    light: "/pegcast/load-plan-light.webp",
+                    dark: "/pegcast/load-plan-dark.webp",
+                  }}
                   alt={loadPlanAlt}
-                  width={675}
-                  height={1380}
-                  className={`${styles.phone} h-auto w-full`}
+                  width={585}
+                  height={1266}
+                  className="h-auto w-full"
                 />
               </div>
               <div className="grid max-w-xl gap-9">
@@ -256,16 +281,20 @@ export default function PegCastPage() {
               </div>
               <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end md:flex-col md:items-start lg:flex-row lg:items-end">
                 <ThemedImage
-                  light="/pegcast/widget-light.webp"
-                  dark="/pegcast/widget-dark.webp"
+                  src={{
+                    light: "/pegcast/widget-light.webp",
+                    dark: "/pegcast/widget-dark.webp",
+                  }}
                   alt={widgetAlt}
                   width={334}
                   height={334}
                   className={`${styles.tile} h-auto w-[170px]`}
                 />
                 <ThemedImage
-                  light="/pegcast/live-activity-light.webp"
-                  dark="/pegcast/live-activity-dark.webp"
+                  src={{
+                    light: "/pegcast/live-activity-light.webp",
+                    dark: "/pegcast/live-activity-dark.webp",
+                  }}
                   alt={liveActivityAlt}
                   width={710}
                   height={257}
@@ -279,8 +308,10 @@ export default function PegCastPage() {
                 className={`${styles.panel} mx-auto w-full max-w-md overflow-hidden rounded-[20px] p-2`}
               >
                 <ThemedImage
-                  light="/pegcast/weather-chart-light.webp"
-                  dark="/pegcast/weather-chart-dark.webp"
+                  src={{
+                    light: "/pegcast/weather-chart-light.webp",
+                    dark: "/pegcast/weather-chart-dark.webp",
+                  }}
                   alt={chartAlt}
                   width={780}
                   height={673}
@@ -321,15 +352,6 @@ export default function PegCastPage() {
                 <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
                   No account, no adverts or tracking, and your plans stay on
                   your iPhone.
-                  {privacyNoticeUrl && (
-                    <>
-                      {" "}
-                      <a href={privacyNoticeUrl} className={styles.accentLink}>
-                        Read the PegCast privacy notice
-                      </a>
-                      .
-                    </>
-                  )}
                 </p>
               </div>
             </div>

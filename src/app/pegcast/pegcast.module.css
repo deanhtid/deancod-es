@@ -116,13 +116,6 @@
   background: var(--pill-shade);
 }
 
-.badge {
-  display: grid;
-  place-items: center;
-  border-radius: 9999px;
-  background: #ffffff;
-}
-
 /* The washing line crosses the sky's light band. */
 .line {
   position: relative;
@@ -240,12 +233,37 @@
   background: var(--bring-in-step);
 }
 
-.phone {
-  filter: drop-shadow(0 30px 40px rgb(0 0 0 / 0.28));
+/* A neutral rounded frame. It does not copy any iPhone model. */
+.frame {
+  padding: 8px;
+  border-radius: 44px;
+  background: #1c1c1e;
+  box-shadow:
+    inset 0 0 0 1px rgb(255 255 255 / 0.14),
+    0 30px 50px rgb(0 0 0 / 0.28);
+}
+
+.frame img {
+  border-radius: 36px;
 }
 
 .tile {
   filter: drop-shadow(0 12px 24px rgb(0 0 0 / 0.18));
+}
+
+/* Each screenshot has a light and a dark image. Only the one for this appearance shows. */
+.darkOnly {
+  display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+  .lightOnly {
+    display: none;
+  }
+
+  .darkOnly {
+    display: block;
+  }
 }
 
 @media (prefers-reduced-motion: reduce) {
