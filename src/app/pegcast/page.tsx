@@ -35,7 +35,7 @@ export const metadata: Metadata = {
         url: "https://deancod.es/pegcast/og.png",
         width: 1200,
         height: 630,
-        alt: "PegCast on an iPhone under a blue sky. The app says Hang now, bring in by 7:00 pm.",
+        alt: "PegCast on an iPhone under a blue sky. The app says Hang now. Bring in between 11:30 am and 7:00 pm.",
       },
     ],
   },
@@ -56,27 +56,27 @@ export const viewport: Viewport = {
 
 const homeAlt: Themed = {
   light:
-    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now, bring in by 7:00 pm, because moving air helps drying. Below, on a white sheet, are three times for today: hang at 9:00 am, dry by about 10:30 to 11:30 am, and bring in by 7:00 pm. The button at the bottom says I've hung it out.",
+    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a white sheet, are three steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. Bring in before dark: the button I've hung it out covers this time.",
   dark:
-    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now, bring in by 7:00 pm, because moving air helps drying. Below, on a black sheet, are three times for today: hang at 9:00 am, dry by about 10:30 to 11:30 am, and bring in by 7:00 pm. The button at the bottom says I've hung it out.",
+    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a black sheet, are three steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. Bring in before dark: the button I've hung it out covers this time.",
 };
 const loadPlanAlt: Themed = {
   light:
-    "The Load Plan screen, with a blue card on a white screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Two switches, both off, set a reminder at 7:00 pm and show the plan on the Lock Screen.",
+    "The Load Plan screen, with a blue card on a white screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. Two switches are off: Remind me at 7:00 pm, and Show on Lock Screen. Below the first are the words Notifications are off, and an Open Settings button.",
   dark:
-    "The Load Plan screen, with a navy card on a black screen. The washing is on the line in Sunderland. Bring in by today, 7:00 pm, checked today at 9:00 am. Two switches, both off, set a reminder at 7:00 pm and show the plan on the Lock Screen.",
+    "The Load Plan screen, with a navy card on a black screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. Two switches are off: Remind me at 7:00 pm, and Show on Lock Screen. Below the first are the words Notifications are off, and an Open Settings button.",
 };
 const widgetAlt: Themed = {
   light:
-    "A small Home Screen widget on a blue day sky. It says On the line, bring in by today, 7:00 pm, saved and checked at 9:00 am.",
+    "A small Home Screen widget on a blue day sky. It says On the line, before dark, today, 7:00 pm, saved and checked at 10:30 am.",
   dark:
-    "A small Home Screen widget on a navy and purple night sky. It says On the line, bring in by today, 7:00 pm, saved and checked at 9:00 am.",
+    "A small Home Screen widget on a navy and purple night sky. It says On the line, before dark, today, 7:00 pm, saved and checked at 10:30 am.",
 };
 const liveActivityAlt: Themed = {
   light:
-    "A Live Activity on the Lock Screen, on a blue day sky. It says bring in by today, 7:00 pm, 10 hours, 0 minutes left, saved and checked at 9:00 am.",
+    "A Live Activity on the Lock Screen, on a blue day sky. It says bring in before dark, today, 7:00 pm, 8 hours, 30 minutes left, saved and checked at 10:30 am.",
   dark:
-    "A Live Activity on the Lock Screen, on a navy and purple night sky. It says bring in by today, 7:00 pm, 10 hours, 0 minutes left, saved and checked at 9:00 am.",
+    "A Live Activity on the Lock Screen, on a navy and purple night sky. It says bring in before dark, today, 7:00 pm, 8 hours, 30 minutes left, saved and checked at 10:30 am.",
 };
 const chartAlt: Themed = {
   light:
@@ -95,14 +95,14 @@ const steps = [
     icon: HangerIcon,
   },
   {
-    label: "Dry by about",
+    label: "Dry from about",
     text: "When it should be dry.",
     className: styles.dryByStep,
     icon: SunIcon,
   },
   {
-    label: "Bring in by",
-    text: "When to bring it in.",
+    label: "Bring in before dark",
+    text: "The latest time to bring it in, and why.",
     className: styles.bringInStep,
     icon: BasketIcon,
   },
@@ -205,8 +205,13 @@ export default function PegCastPage() {
                   Three times for every load
                 </h2>
                 <p className={`${styles.muted} mt-4 text-lg leading-relaxed`}>
-                  PegCast looks at rain, wind, humidity and daylight, hour by
-                  hour. Then it tells you what to do and when.
+                  PegCast reads the rain, wind, temperature, humidity, cloud
+                  cover and daylight, hour by hour. It also works out how much sun
+                  reaches the washing. Then it tells you what to do and when.
+                </p>
+                <p className={`${styles.muted} mt-4 text-lg leading-relaxed`}>
+                  PegCast sets its dry times a little late on purpose, so you
+                  do not bring the washing in damp.
                 </p>
               </div>
               <ol className={`${styles.steps} grid gap-5`}>
@@ -256,6 +261,10 @@ export default function PegCastPage() {
                   When the advice says Hang now, tap I&apos;ve hung it out.
                   PegCast saves the load and tells you when to bring it in.
                 </Feature>
+                <Feature title="Tells you why">
+                  The time to bring the washing in comes with its reason:
+                  dark, rain, damp air or strong wind.
+                </Feature>
                 <Feature title="The Load Plan">
                   Plan a load for later. PegCast checks the weather again
                   before you hang it out. While the washing is out, Check
@@ -297,7 +306,7 @@ export default function PegCastPage() {
                   }}
                   alt={liveActivityAlt}
                   width={710}
-                  height={257}
+                  height={260}
                   className={`${styles.tile} h-auto w-full max-w-[340px]`}
                 />
               </div>
