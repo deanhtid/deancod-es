@@ -56,15 +56,15 @@ export const viewport: Viewport = {
 
 const homeAlt: Themed = {
   light:
-    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a white sheet, are three steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. Bring in before dark: the button I've hung it out covers this time.",
+    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a white sheet, are the steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. A full-width I've hung it out button covers the third step.",
   dark:
-    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a black sheet, are three steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. Bring in before dark: the button I've hung it out covers this time.",
+    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a black sheet, are the steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. A full-width I've hung it out button covers the third step.",
 };
 const loadPlanAlt: Themed = {
   light:
-    "The Load Plan screen, with a blue card on a white screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. Two switches are off: Remind me at 7:00 pm, and Show on Lock Screen. Below the first are the words Notifications are off, and an Open Settings button.",
+    "The Load Plan screen, with a blue card on a white screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. The card has a Check again button. Three switches are off: Remind me at 7:00 pm, Show on Lock Screen, and Alert me if the forecast changes. A note says alerts use background checks, which iOS can run hours late. Below are Plan history and a full-width Brought in button.",
   dark:
-    "The Load Plan screen, with a navy card on a black screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. Two switches are off: Remind me at 7:00 pm, and Show on Lock Screen. Below the first are the words Notifications are off, and an Open Settings button.",
+    "The Load Plan screen, with a navy card on a black screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. The card has a Check again button. Three switches are off: Remind me at 7:00 pm, Show on Lock Screen, and Alert me if the forecast changes. A note says alerts use background checks, which iOS can run hours late. Below are Plan history and a full-width Brought in button.",
 };
 const widgetAlt: Themed = {
   light:
@@ -80,9 +80,9 @@ const liveActivityAlt: Themed = {
 };
 const chartAlt: Themed = {
   light:
-    "Weather details on a white background, with two charts across the day. The rain chance is 0% in every hour. The wind is 7 mph in every hour. A pale orange band marks the daylight hours.",
+    "Two weather charts on a white background, from 9 am to after 9 pm. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green line marks the hang time, 9 am. Two dotted orange lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A pale shade marks the daylight hours, and a Daylight key sits below.",
   dark:
-    "Weather details on a black background, with two charts across the day. The rain chance is 0% in every hour. The wind is 7 mph in every hour. A dark brown band marks the daylight hours.",
+    "Two weather charts on a black background, from 9 am to after 9 pm. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green line marks the hang time, 9 am. Two dotted yellow lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A dark shade marks the daylight hours, and a Daylight key sits below.",
 };
 /** The app icon sits beside the name "PegCast", so it is decoration. */
 const decorative: Themed = { light: "", dark: "" };
@@ -163,7 +163,8 @@ export default function PegCastPage() {
               </p>
               <p className="mt-5 max-w-lg text-pretty text-lg font-medium leading-relaxed text-white">
                 An iPhone app that reads the hourly forecast for your town and
-                gives you three times for each load.
+                gives you three times for each load. It works in the UK,
+                Ireland, Australia and New Zealand.
               </p>
               <p
                 className={`${styles.pill} mt-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-semibold`}
@@ -273,6 +274,7 @@ export default function PegCastPage() {
                 <Feature title="Reminders">
                   Turn on a reminder for when to bring the washing in. A load
                   you plan for later can also remind you at its Hang time.
+                  PegCast can alert you if the forecast changes.
                 </Feature>
               </div>
             </div>
@@ -329,8 +331,9 @@ export default function PegCastPage() {
               </div>
               <div className="max-w-xl">
                 <Feature title="The weather chart">
-                  Two small charts show the chance of rain and the wind for
-                  each hour. Daylight hours are shaded.
+                  Small charts show the drying speed, the chance of rain and
+                  the wind for each hour. Lines mark the advice times, and
+                  daylight hours are shaded.
                 </Feature>
               </div>
             </div>
