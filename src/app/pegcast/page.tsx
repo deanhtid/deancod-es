@@ -56,9 +56,9 @@ export const viewport: Viewport = {
 
 const homeAlt: Themed = {
   light:
-    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a white sheet, are the steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. A full-width I've hung it out button covers the third step.",
+    "PegCast Home screen for Sunderland, under a blue day sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a white sheet, are three steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. Bring in before dark: Today, 7:00 pm. Below the steps are a full-width I've hung it out button and the reason Moving air helps drying.",
   dark:
-    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a black sheet, are the steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. A full-width I've hung it out button covers the third step.",
+    "PegCast Home screen for Sunderland, under a navy and purple night sky. The sky says Hang now. Bring in between 11:30 am and 7:00 pm. Sunshine helps drying. Below, on a black sheet, are three steps. Hang time: Today, 9:00 am. Dry from about: Today, 11:30 am. Bring in before dark: Today, 7:00 pm. Below the steps are a full-width I've hung it out button and the reason Moving air helps drying.",
 };
 const loadPlanAlt: Themed = {
   light:
@@ -80,9 +80,9 @@ const liveActivityAlt: Themed = {
 };
 const chartAlt: Themed = {
   light:
-    "Two weather charts on a white background, from 9 am to after 9 pm. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green line marks the hang time, 9 am. Two dotted orange lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A pale shade marks the daylight hours, and a Daylight key sits below.",
+    "Two weather charts on a white background, from 9 am to after 9 pm. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green band along the top of each chart marks the Recommended Window, 9 am to 7:00 pm. A green line marks the hang time, 9 am. Two dotted orange lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A pale orange tint marks the daylight hours. It matches the Daylight key below.",
   dark:
-    "Two weather charts on a black background, from 9 am to after 9 pm. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green line marks the hang time, 9 am. Two dotted yellow lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A dark shade marks the daylight hours, and a Daylight key sits below.",
+    "Two weather charts on a black background, from 9 am to after 9 pm. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green band along the top of each chart marks the Recommended Window, 9 am to 7:00 pm. A green line marks the hang time, 9 am. Two dotted yellow lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A dark brown tint marks the daylight hours. It matches the Daylight key below.",
 };
 /** The app icon sits beside the name "PegCast", so it is decoration. */
 const decorative: Themed = { light: "", dark: "" };
@@ -264,7 +264,9 @@ export default function PegCastPage() {
                 </Feature>
                 <Feature title="Tells you why">
                   The time to bring the washing in comes with its reason:
-                  dark, rain, damp air or strong wind.
+                  dark, rain, damp air or strong wind. A small chance of rain
+                  only adds a caution, such as &ldquo;A light shower is possible
+                  at 2:00 pm.&rdquo;
                 </Feature>
                 <Feature title="The Load Plan">
                   Plan a load for later. PegCast checks the weather again
@@ -332,8 +334,9 @@ export default function PegCastPage() {
               <div className="max-w-xl">
                 <Feature title="The weather chart">
                   Small charts show the drying speed, the chance of rain and
-                  the wind for each hour. Lines mark the advice times, and
-                  daylight hours are shaded.
+                  the wind for each hour. A green band marks the Recommended
+                  Window. Lines mark the advice times, and daylight hours are
+                  shaded.
                 </Feature>
               </div>
             </div>
