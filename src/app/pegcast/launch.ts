@@ -1,7 +1,8 @@
 /**
  * The App Store launch switch. Set it to true when the App Store listing is live.
  * It swaps "Coming soon" for the App Store badge and adds Safari's Smart App Banner.
- * In the same publish, export the privacy page again from PegCast with its App Store link.
+ * The privacy page comes from PegCast. Set `href` in `storeLinks` in `packages/privacy-content`
+ * to `appStoreUrl`, then run `pnpm export:privacy` into this site. The build fails until they agree.
  */
 export const onAppStore = false;
 

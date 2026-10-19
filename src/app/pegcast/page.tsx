@@ -22,7 +22,7 @@ const availability = onAppStore
       text: "PegCast is on the App Store for iPhone. It needs iOS 26 or later.",
     }
   : {
-      summary: "Coming soon to the App Store.",
+      summary: `${storeStatus}.`,
       heading: "Coming soon",
       text: "PegCast is in its last round of private testing. Then it comes to the App Store for iPhone.",
     };
@@ -283,9 +283,9 @@ export default function PegCastPage() {
                 pm.&rdquo;
               </Feature>
               <Feature title="The Load Plan" className="max-w-xl md:col-start-2 md:row-start-4 md:mt-9">
-                Plan a load for later. When you hang it out, PegCast checks the
-                weather again. While the washing is out, Check again tells you
-                if the time to bring it in has changed.
+                Plan a load for later. PegCast checks the weather again before
+                you hang it out. While the washing is out, Check again tells
+                you if the time to bring it in has changed.
               </Feature>
               <div
                 className={`${styles.frame} mx-auto my-3 w-60 sm:w-64 md:col-start-1 md:row-span-6 md:row-start-1 md:my-0 md:self-center`}
