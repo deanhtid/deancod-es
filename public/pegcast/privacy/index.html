@@ -144,7 +144,16 @@
       th:last-child, td:last-child { padding-right: 0; }
       thead th { color: var(--muted); font-size: 0.9375rem; font-weight: 700; }
       tbody th { width: 28%; font-weight: 750; }
-      @media (max-width: 40rem) { table { font-size: 0.9375rem; } th, td { padding-right: 0.5rem; } }
+      /* On a phone, each row stacks as a block. The roles keep the table for assistive technology. */
+      @media (max-width: 40rem) {
+        table { font-size: 0.9375rem; }
+        thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
+        table, caption, tbody, th, td { display: block; }
+        tr { display: block; padding-block: 0.875rem; border-bottom: 1px solid var(--rule); }
+        tbody th, td { width: auto; padding: 0; border-bottom: 0; }
+        td { margin-top: 0.5rem; }
+        td::before { content: attr(data-label); content: attr(data-label) / ""; display: block; color: var(--muted); font-size: 0.8125rem; font-weight: 700; }
+      }
 
       .store-links { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 1.25rem; }
       /* Inline blocks keep the spaces around the dash, which a flex item drops. */
@@ -175,13 +184,13 @@
         <div class="hero wrap">
           <div>
             <h1>Privacy and support</h1>
-            <p class="lead">The useful answer first. The detail when you want it.</p>
+            <p class="lead">How PegCast handles your information, and how to get help.</p>
           </div>
           <ul class="promises" aria-label="PegCast promises">
             <li><span class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>No account</li>
             <li><span class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>No adverts or tracking</li>
             <li><span class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Your plans stay on your iPhone</li>
-            <li><span class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Drying results shared only by you</li>
+            <li><span class="tick"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="m5 12.5 4.5 4.5L19 7.5"/></svg></span>Drying Outcomes shared only by you</li>
           </ul>
         </div>
         <div class="line" aria-hidden="true">
@@ -206,7 +215,7 @@
           <main id="main-content">
             <section id="privacy" aria-labelledby="privacy-title">
               <h2 id="privacy-title">Privacy notice</h2>
-              <p class="intro">PegCast works without an account and never turns privacy into an onboarding wall.</p>
+              <p class="intro">PegCast works without an account. It asks for a permission only when you choose a feature that needs it.</p>
               <div class="disclosures">
             <details>
               <summary>Who is responsible</summary>
@@ -245,7 +254,8 @@
               <p>An export holds each Drying Outcome with its original advice and forecast inputs. It also holds any revised advice, the model version and the plan times.</p>
 <p>It keeps your Forecast Location only as coordinates rounded to 0.1 degree, an area several kilometres wide. It has no place name, address, account, device identifier or password.</p>
 <p>Sharing sends a copy to the place that you choose. Your records stay on this iPhone if you cancel or sharing fails.</p>
-<p>If you send the export to Dean, Dean uses it to test the drying model. Dean deletes it 12 months after your last message about it.</p>
+<p>If you send the export to Dean, Dean uses it to test the drying model. An emailed export arrives with your email address, so Dean can link it to you.</p>
+<p>Dean deletes it 12 months after your last message about it.</p>
               
             </details>
             <details>
@@ -264,7 +274,7 @@
               <summary>Your choices</summary>
               <p>You do not have to give PegCast any personal information. Without a place, PegCast cannot give drying advice.</p>
 <p>Location permission is optional. Searching for a town or postcode is a complete path.</p>
-<p>Reminders, Forecast-Change Alerts and Drying Outcomes are optional. PegCast asks only when you choose them, never as an opening consent wall.</p>
+<p>Reminders, Forecast-Change Alerts and Drying Outcomes are optional. PegCast asks only when you choose them, not when you first open it.</p>
 <p>Emailing Dean and sending an export are optional too.</p>
               
             </details>
@@ -293,73 +303,73 @@
             </details>
               </div>
               <h3 id="contextual-title">When optional features ask</h3>
-              <p class="intro">PegCast asks only after you choose the feature. You see these words and two choices.</p>
+              <p class="intro">PegCast asks only after you choose the feature. Each item names the button or switch that you tap.</p>
               <dl class="contextual" aria-labelledby="contextual-title">
             <div>
-              <dt><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 3.5 3.5 10.6l7.2 2.7 2.7 7.2 7.1-17Z"/></svg></span>Find weather near you</dt>
+              <dt><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M20.5 3.5 3.5 10.6l7.2 2.7 2.7 7.2 7.1-17Z"/></svg></span>Use your device location</dt>
               <dd>PegCast asks for location access only when you tap Use device location. Apple Maps finds a place from it. PegCast keeps only its town, postcode district, time zone and a position to about 1 km.</dd>
-              <dd class="choices"><strong>Choices:</strong> Use device location / Search for a town or postcode</dd>
+              <dd class="choices"><strong>In the app:</strong> &quot;Use device location&quot;. iOS then asks for location access. Searching for a town or postcode needs no permission.</dd>
             </div>
             <div>
               <dt><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15l1.5-2Z"/><path d="M10 21h4"/></svg></span>Remind me to bring washing in</dt>
               <dd>A Bring-In Reminder is a notification that this iPhone schedules. PegCast asks for notification permission only when you turn on a reminder or Forecast-Change Alerts.</dd>
-              <dd class="choices"><strong>Choices:</strong> Remind me at the Bring-In Time / No reminder</dd>
+              <dd class="choices"><strong>In the app:</strong> &quot;Remind me at 7:00 pm&quot;, &quot;Alert me if the forecast changes&quot;. These switches are on the plan screen, and each reminder shows your own time. iOS then asks for notification permission.</dd>
             </div>
             <div>
               <dt><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8.5 3.5 3 6.5l2 4.5 2-1V20.5h10V10l2 1 2-4.5-5.5-3c-.8 1.6-2 2.5-3.5 2.5s-2.7-.9-3.5-2.5Z"/></svg></span>Record how the washing dried</dt>
-              <dd>After you bring washing in, you can record how dry it was. The record stays on this iPhone. PegCast makes an export file only when you ask, and you choose where it goes.</dd>
-              <dd class="choices"><strong>Choices:</strong> Save / Not now</dd>
+              <dd>After you bring washing in, you can keep a record of how dry it was. The record stays on this iPhone. PegCast makes an export file only when you ask, and you choose where it goes.</dd>
+              <dd class="choices"><strong>In the app:</strong> &quot;Record Drying Outcome&quot;, &quot;Save&quot;, &quot;Not now&quot;. The plan screen offers it after you bring washing in.</dd>
             </div>
               </dl>
               <div class="inventory" id="inventory">
-                <table>
+                <table role="table">
                   <caption>Current data inventory</caption>
-                  <thead><tr><th scope="col">Data</th><th scope="col">Destination</th><th scope="col">Retention</th></tr></thead>
-                  <tbody>
-              <tr>
-                <th scope="row">Place search text</th>
-                <td>Apple Maps</td>
-                <td>PegCast does not store the search text</td>
+                  <thead role="rowgroup"><tr role="row"><th scope="col" role="columnheader" id="inventory-data">Data</th><th scope="col" role="columnheader" id="inventory-destination">Destination</th><th scope="col" role="columnheader" id="inventory-retention">Retention</th></tr></thead>
+                  <tbody role="rowgroup">
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-0">Place search text</th>
+                <td role="cell" headers="inventory-row-0 inventory-destination" data-label="Destination">Apple Maps</td>
+                <td role="cell" headers="inventory-row-0 inventory-retention" data-label="Retention">PegCast does not store the search text</td>
               </tr>
-              <tr>
-                <th scope="row">Device location</th>
-                <td>Apple Maps, only after Use device location</td>
-                <td>One request. iOS gives an approximate location unless you allow Precise Location. PegCast keeps only the town, postcode district, time zone and a position to about 1 km</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-1">Device location</th>
+                <td role="cell" headers="inventory-row-1 inventory-destination" data-label="Destination">Apple Maps, only after Use device location</td>
+                <td role="cell" headers="inventory-row-1 inventory-retention" data-label="Retention">One request. iOS gives an approximate location unless you allow Precise Location. PegCast keeps only the town, postcode district, time zone and a position to about 1 km</td>
               </tr>
-              <tr>
-                <th scope="row">Forecast Location</th>
-                <td>On this iPhone, as a town, postcode district, time zone and a position to about 1 km. Apple Weather receives that position</td>
-                <td>Until you choose another place, or app removal</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-2">Forecast Location</th>
+                <td role="cell" headers="inventory-row-2 inventory-destination" data-label="Destination">On this iPhone, as a town, postcode district, time zone and a position to about 1 km. Apple Weather receives that position</td>
+                <td role="cell" headers="inventory-row-2 inventory-retention" data-label="Retention">Until you choose another place, or app removal</td>
               </tr>
-              <tr>
-                <th scope="row">Last advice and forecast</th>
-                <td>On this iPhone</td>
-                <td>Until the next successful refresh, or app removal</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-3">Last advice and forecast</th>
+                <td role="cell" headers="inventory-row-3 inventory-destination" data-label="Destination">On this iPhone</td>
+                <td role="cell" headers="inventory-row-3 inventory-retention" data-label="Retention">Until the next successful refresh, or app removal</td>
               </tr>
-              <tr>
-                <th scope="row">Load Plans and revised advice</th>
-                <td>On this iPhone</td>
-                <td>Until app removal</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-4">Load Plans and revised advice</th>
+                <td role="cell" headers="inventory-row-4 inventory-destination" data-label="Destination">On this iPhone</td>
+                <td role="cell" headers="inventory-row-4 inventory-retention" data-label="Retention">Until app removal</td>
               </tr>
-              <tr>
-                <th scope="row">Drying Outcomes</th>
-                <td>On this iPhone</td>
-                <td>Until app removal</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-5">Drying Outcomes</th>
+                <td role="cell" headers="inventory-row-5 inventory-destination" data-label="Destination">On this iPhone</td>
+                <td role="cell" headers="inventory-row-5 inventory-retention" data-label="Retention">Until app removal</td>
               </tr>
-              <tr>
-                <th scope="row">Drying Outcome export</th>
-                <td>Only where you send it</td>
-                <td>Dean uses a file that you send to test the drying model. Dean deletes it 12 months after your last message about it. Your records stay on this iPhone</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-6">Drying Outcome export</th>
+                <td role="cell" headers="inventory-row-6 inventory-destination" data-label="Destination">Only where you send it</td>
+                <td role="cell" headers="inventory-row-6 inventory-retention" data-label="Retention">Dean uses a file that you send to test the drying model. An emailed file arrives with your email address, so Dean can link it to you. Dean deletes it 12 months after your last message about it. Your records stay on this iPhone</td>
               </tr>
-              <tr>
-                <th scope="row">Bring-In Reminder</th>
-                <td>A notification scheduled by iOS on this iPhone</td>
-                <td>Until it is delivered, turned off, or its plan ends</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-7">Bring-In Reminder</th>
+                <td role="cell" headers="inventory-row-7 inventory-destination" data-label="Destination">A notification scheduled by iOS on this iPhone</td>
+                <td role="cell" headers="inventory-row-7 inventory-retention" data-label="Retention">Until it is delivered, turned off, or its plan ends</td>
               </tr>
-              <tr>
-                <th scope="row">Support correspondence</th>
-                <td>Dean&#039;s iCloud Mail inbox</td>
-                <td>12 months after the last message, then deleted</td>
+              <tr role="row">
+                <th scope="row" role="rowheader" id="inventory-row-8">Support correspondence</th>
+                <td role="cell" headers="inventory-row-8 inventory-destination" data-label="Destination">Dean&#039;s iCloud Mail inbox</td>
+                <td role="cell" headers="inventory-row-8 inventory-retention" data-label="Retention">12 months after the last message, then deleted</td>
               </tr>
                   </tbody>
                 </table>
