@@ -1,4 +1,6 @@
-# The PegCast privacy and support page must load no third-party scripts.
-# no-transform stops Cloudflare from adding scripts to it, such as Rocket Loader and the analytics beacon.
+# The PegCast pages must load no third-party scripts.
+# no-transform stops Cloudflare from adding scripts to them, such as Rocket Loader and the analytics beacon.
+/pegcast/
+  Cache-Control: public, max-age=0, must-revalidate, no-transform
 /pegcast/privacy/
   Cache-Control: public, max-age=0, must-revalidate, no-transform

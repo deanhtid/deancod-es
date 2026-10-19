@@ -77,27 +77,27 @@ const homeAlt: Themed = {
 };
 const loadPlanAlt: Themed = {
   light:
-    "The Load Plan screen, with a blue card on a white screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. The card has a Check again button. Three switches are off: Remind me at 7:00 pm, Show on Lock Screen, and Alert me if the forecast changes. A note says alerts use background checks, which iOS can run hours late. Below are Plan history and a full-width Brought in button.",
+    "The Load Plan screen, with a blue card on a white screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. The card has a Check again button. Below it, PegCast asks once: Want a reminder at 7:00 pm? with Remind me and Not now buttons. Below that are the Remind me at 7:00 pm, Show on Lock Screen and Alert me if the forecast changes switches, all off, and a full-width Brought in button.",
   dark:
-    "The Load Plan screen, with a navy card on a black screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. The card has a Check again button. Three switches are off: Remind me at 7:00 pm, Show on Lock Screen, and Alert me if the forecast changes. A note says alerts use background checks, which iOS can run hours late. Below are Plan history and a full-width Brought in button.",
+    "The Load Plan screen, with a navy card on a black screen. An Everyday Load is on the line in Sunderland. Bring in before dark, today, 7:00 pm. Checked today, 9:00 am. Sunshine helps drying. The card has a Check again button. Below it, PegCast asks once: Want a reminder at 7:00 pm? with Remind me and Not now buttons. Below that are the Remind me at 7:00 pm, Show on Lock Screen and Alert me if the forecast changes switches, all off, and a full-width Brought in button.",
 };
 const widgetAlt: Themed = {
   light:
-    "A small Home Screen widget on a blue day sky. It says On the line, before dark, today, 7:00 pm, saved and checked at 10:30 am.",
+    "A small Home Screen widget on a blue day sky. It says On the line, before dark, today, 7:00 pm, checked at 10:30 am.",
   dark:
-    "A small Home Screen widget on a navy and purple night sky. It says On the line, before dark, today, 7:00 pm, saved and checked at 10:30 am.",
+    "A small Home Screen widget on a navy and purple night sky. It says On the line, before dark, today, 7:00 pm, checked at 10:30 am.",
 };
 const liveActivityAlt: Themed = {
   light:
-    "A Live Activity on the Lock Screen, on a blue day sky. It says bring in before dark, today, 7:00 pm, 8 hours, 30 minutes left, saved and checked at 10:30 am.",
+    "A Live Activity on the Lock Screen, in light colours. It says bring in before dark, today, 7:00 pm, checked at 10:30 am.",
   dark:
-    "A Live Activity on the Lock Screen, on a navy and purple night sky. It says bring in before dark, today, 7:00 pm, 8 hours, 30 minutes left, saved and checked at 10:30 am.",
+    "A Live Activity on the Lock Screen, in dark colours. It says bring in before dark, today, 7:00 pm, checked at 10:30 am.",
 };
 const chartAlt: Themed = {
   light:
-    "Three weather charts on a white background, from 9 am to after 9 pm. Drying speed: water lost each hour from 1 square metre of wet fabric. Drying is fastest from 12:00 pm to 2:00 pm, then slows as the sun gets lower. Its bars end at 7:00 pm, and a dashed line shows no drying after that. A key below it names the Recommended Window and the advice times. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green band along the top of each chart marks the Recommended Window, 9 am to 7:00 pm. A green line marks the hang time, 9 am. Two dotted orange lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A pale orange tint marks the daylight hours. It matches the Daylight key below.",
+    "On a white background. Three weather charts, from 9 am to after midnight. Drying speed: estimated water lost each hour from 1 square metre of wet fabric. Drying is fastest from 1:00 pm to 2:00 pm, then slows as the sun gets lower. Its bars end at 5:00 pm, when rain is due, and a dashed line shows no drying after that. A key names the Recommended Window, the hang time at 9:00 am, the drying estimate from 11:00 to 11:30 am, and bring in before rain at 5:00 pm. Rain chance: from 0% to 55%, highest at 6:00 pm. Wind: from 4 mph to 12 mph, strongest at 2:00 pm. A green band along the top of each chart marks the Recommended Window, and a thin strip along the bottom marks the daylight hours.",
   dark:
-    "Three weather charts on a black background, from 9 am to after 9 pm. Drying speed: water lost each hour from 1 square metre of wet fabric. Drying is fastest from 12:00 pm to 2:00 pm, then slows as the sun gets lower. Its bars end at 7:00 pm, and a dashed line shows no drying after that. A key below it names the Recommended Window and the advice times. Rain chance: the rain chance is 0% in every hour. Wind: the wind is 7 mph in every hour. A green band along the top of each chart marks the Recommended Window, 9 am to 7:00 pm. A green line marks the hang time, 9 am. Two dotted yellow lines, near 11 am and 11:30 am, mark when it should be dry. A dashed red line marks the time to bring it in, 7:00 pm. A dark brown tint marks the daylight hours. It matches the Daylight key below.",
+    "On a black background. Three weather charts, from 9 am to after midnight. Drying speed: estimated water lost each hour from 1 square metre of wet fabric. Drying is fastest from 1:00 pm to 2:00 pm, then slows as the sun gets lower. Its bars end at 5:00 pm, when rain is due, and a dashed line shows no drying after that. A key names the Recommended Window, the hang time at 9:00 am, the drying estimate from 11:00 to 11:30 am, and bring in before rain at 5:00 pm. Rain chance: from 0% to 55%, highest at 6:00 pm. Wind: from 4 mph to 12 mph, strongest at 2:00 pm. A green band along the top of each chart marks the Recommended Window, and a thin strip along the bottom marks the daylight hours.",
 };
 /** The app icon sits beside the name "PegCast", so it is decoration. */
 const decorative: Themed = { light: "", dark: "" };
@@ -341,8 +341,8 @@ export default function PegCastPage() {
                     dark: "/pegcast/live-activity-dark.webp",
                   }}
                   alt={liveActivityAlt}
-                  width={710}
-                  height={260}
+                  width={1074}
+                  height={338}
                   className={`${styles.tile} h-auto w-full max-w-[340px]`}
                 />
               </div>

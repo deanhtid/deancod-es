@@ -144,7 +144,6 @@
       th:last-child, td:last-child { padding-right: 0; }
       thead th { color: var(--muted); font-size: 0.9375rem; font-weight: 700; }
       tbody th { width: 28%; font-weight: 750; }
-      /* On a phone, each row stacks as a block. The roles keep the table for assistive technology. */
       @media (max-width: 40rem) {
         table { font-size: 0.9375rem; }
         thead { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); white-space: nowrap; }
@@ -237,6 +236,7 @@
 <p>With Forecast-Change Alerts on, iOS can run background checks for your Load Plan. Each check sends the same rounded position to Apple Weather.</p>
 <p>Apple Maps receives your place search. It receives your device location only when you tap Use device location.</p>
 <p>Apple may handle these requests outside your country. The Apple Privacy Policy covers how Apple handles them.</p>
+<p>Apple handles your purchase of PegCast. PegCast never sees your payment details.</p>
               <p><a href="https://www.apple.com/legal/privacy/">Apple Privacy Policy</a></p>
             </details>
             <details>
@@ -254,7 +254,7 @@
               <p>An export holds each Drying Outcome with its original advice and forecast inputs. It also holds any revised advice, the model version and the plan times.</p>
 <p>It keeps your Forecast Location only as coordinates rounded to 0.1 degree, an area several kilometres wide. It has no place name, address, account, device identifier or password.</p>
 <p>Sharing sends a copy to the place that you choose. Your records stay on this iPhone if you cancel or sharing fails.</p>
-<p>If you send the export to Dean, Dean uses it to test the drying model. An emailed export arrives with your email address, so Dean can link it to you.</p>
+<p>If you send the export to Dean, Dean uses it to test the drying model. It arrives with your email address or other contact details, so Dean can link it to you.</p>
 <p>Dean deletes it 12 months after your last message about it.</p>
               
             </details>
@@ -313,7 +313,7 @@
             <div>
               <dt><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M6 16.5V11a6 6 0 0 1 12 0v5.5l1.5 2h-15l1.5-2Z"/><path d="M10 21h4"/></svg></span>Remind me to bring washing in</dt>
               <dd>A Bring-In Reminder is a notification that this iPhone schedules. PegCast asks for notification permission only when you turn on a reminder or Forecast-Change Alerts.</dd>
-              <dd class="choices"><strong>In the app:</strong> &quot;Remind me at 7:00 pm&quot;, &quot;Alert me if the forecast changes&quot;. These switches are on the plan screen, and each reminder shows your own time. iOS then asks for notification permission.</dd>
+              <dd class="choices"><strong>In the app:</strong> &quot;Remind me at 7:00 pm&quot;, &quot;Alert me if the forecast changes&quot;. These switches are on the plan screen. Each reminder switch shows the time of its reminder. iOS then asks for notification permission.</dd>
             </div>
             <div>
               <dt><span class="tile"><svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" focusable="false"><path d="M8.5 3.5 3 6.5l2 4.5 2-1V20.5h10V10l2 1 2-4.5-5.5-3c-.8 1.6-2 2.5-3.5 2.5s-2.7-.9-3.5-2.5Z"/></svg></span>Record how the washing dried</dt>
@@ -359,7 +359,7 @@
               <tr role="row">
                 <th scope="row" role="rowheader" id="inventory-row-6">Drying Outcome export</th>
                 <td role="cell" headers="inventory-row-6 inventory-destination" data-label="Destination">Only where you send it</td>
-                <td role="cell" headers="inventory-row-6 inventory-retention" data-label="Retention">Dean uses a file that you send to test the drying model. An emailed file arrives with your email address, so Dean can link it to you. Dean deletes it 12 months after your last message about it. Your records stay on this iPhone</td>
+                <td role="cell" headers="inventory-row-6 inventory-retention" data-label="Retention">Dean uses a file that you send to test the drying model. It arrives with your email address or other contact details, so Dean can link it to you. Dean deletes it 12 months after your last message about it. Your records stay on this iPhone</td>
               </tr>
               <tr role="row">
                 <th scope="row" role="rowheader" id="inventory-row-7">Bring-In Reminder</th>
@@ -409,7 +409,7 @@
     </div>
     <footer>
       <div class="wrap">
-        <p>Effective date: 18 October 2026.</p>
+        <p>Effective date: 19 October 2026.</p>
         <p>This page uses no cookies, trackers, forms, scripts or advertising.</p>
         <p class="credit"><a href="https://deancod.es/pegcast/">Made by Dean Whittaker</a></p>
       </div>
