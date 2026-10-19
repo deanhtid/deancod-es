@@ -1,7 +1,9 @@
 import type { Metadata, Viewport } from "next";
 import { Nunito } from "next/font/google";
+import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
+import { appStoreId, appStoreUrl, onAppStore } from "./launch";
 import ThemedImage, { type Themed } from "./ThemedImage";
 import WashingLine from "./WashingLine";
 import styles from "./pegcast.module.css";
@@ -12,13 +14,26 @@ const nunito = Nunito({
   display: "swap",
 });
 
+/** Where to get PegCast, before and after the App Store launch. */
+const availability = onAppStore
+  ? {
+      summary: "Download it on the App Store.",
+      heading: "Get PegCast",
+      text: "PegCast is on the App Store for iPhone. It needs iOS 26 or later.",
+    }
+  : {
+      summary: "Coming soon to the App Store.",
+      heading: "Coming soon",
+      text: "PegCast is in its last round of private testing. Then it comes to the App Store for iPhone.",
+    };
+
 const title = "PegCast: when to hang the washing out";
-const description =
-  "PegCast is an iPhone app that tells you when to hang the washing out and when to bring it in. Made by Dean Whittaker. In private testing.";
+const description = `PegCast is an iPhone app that tells you when to hang the washing out and when to bring it in. Made by Dean Whittaker. ${availability.summary}`;
 
 export const metadata: Metadata = {
   title,
   description,
+  itunes: onAppStore ? { appId: appStoreId } : null,
   alternates: {
     // The export writes pegcast/index.html, and Cloudflare Pages serves it at /pegcast/.
     canonical: "https://deancod.es/pegcast/",
@@ -166,12 +181,16 @@ export default function PegCastPage() {
                 gives you three times for each load. It works in the UK,
                 Ireland, Australia and New Zealand.
               </p>
-              <p
-                className={`${styles.pill} mt-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-semibold`}
-              >
-                <FlaskIcon />
-                In private testing
-              </p>
+              {onAppStore ? (
+                <AppStoreBadge className="mt-7" />
+              ) : (
+                <p
+                  className={`${styles.pill} mt-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-semibold`}
+                >
+                  <ClockIcon />
+                  Coming soon to the App Store
+                </p>
+              )}
             </div>
 
             <div className={`${styles.frame} mx-auto w-64 sm:w-72 lg:w-80`}>
@@ -362,12 +381,12 @@ export default function PegCastPage() {
             <div className={`${styles.panel} grid gap-8 rounded-[28px] p-7 sm:p-10 md:grid-cols-2`}>
               <div>
                 <h2 id="about-heading" className="text-2xl font-extrabold">
-                  In private testing
+                  {availability.heading}
                 </h2>
                 <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
-                  PegCast is not on the App Store yet. Its advice is
-                  experimental.
+                  {availability.text}
                 </p>
+                {onAppStore && <AppStoreBadge className="mt-5" />}
                 <p className="mt-5 text-lg font-bold">
                   Made by{" "}
                   <Link href="/" className={styles.accentLink}>
@@ -415,6 +434,21 @@ function Feature({
   );
 }
 
+/** Apple's own badge artwork, unaltered and at least 40 px high, as Apple's badge guidelines ask. */
+function AppStoreBadge({ className }: { className: string }) {
+  return (
+    <a href={appStoreUrl} className={`${className} inline-block rounded-[10px]`}>
+      <Image
+        src="/pegcast/app-store-badge.svg"
+        alt="Download on the App Store"
+        width={144}
+        height={48}
+        className="h-12 w-auto"
+      />
+    </a>
+  );
+}
+
 function HangerIcon() {
   return (
     <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
@@ -442,11 +476,11 @@ function BasketIcon() {
   );
 }
 
-function FlaskIcon() {
+function ClockIcon() {
   return (
     <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" aria-hidden="true">
-      <path d="M9 3h6M10 3v6.5L4.6 18.4A1.7 1.7 0 0 0 6 21h12a1.7 1.7 0 0 0 1.4-2.6L14 9.5V3" />
-      <path d="M7.5 15h9" />
+      <circle cx="12" cy="12" r="9" />
+      <path d="M12 7v5l3 2" />
     </svg>
   );
 }
