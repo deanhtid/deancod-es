@@ -248,8 +248,29 @@ export default function PegCastPage() {
               What PegCast does
             </h2>
 
-            <div className="mt-12 grid items-center gap-12 md:grid-cols-[auto_1fr] md:gap-20">
-              <div className={`${styles.frame} mx-auto w-60 sm:w-64`}>
+            {/*
+              On a phone the Load Plan screenshot follows "The Load Plan".
+              On a wider screen it spans every row of the left column, and the empty rows centre the text.
+            */}
+            <div className="mt-12 grid gap-9 md:grid-cols-[auto_1fr] md:grid-rows-[1fr_repeat(4,auto)_1fr] md:gap-x-20">
+              <Feature title="Hang now in one tap" className="max-w-xl md:col-start-2 md:row-start-2">
+                When the advice says Hang now, tap I&apos;ve hung it out.
+                PegCast saves the load and tells you when to bring it in.
+              </Feature>
+              <Feature title="Tells you why" className="max-w-xl md:col-start-2 md:row-start-3">
+                The time to bring the washing in comes with its reason: dark,
+                rain, damp air or strong wind. A small chance of rain only adds
+                a caution, such as &ldquo;A light shower is possible at 2:00
+                pm.&rdquo;
+              </Feature>
+              <Feature title="The Load Plan" className="max-w-xl md:col-start-2 md:row-start-4">
+                Plan a load for later. PegCast checks the weather again before
+                you hang it out. While the washing is out, Check again tells
+                you if the time to bring it in has changed.
+              </Feature>
+              <div
+                className={`${styles.frame} mx-auto my-3 w-60 sm:w-64 md:col-start-1 md:row-span-6 md:row-start-1 md:my-0 md:self-center`}
+              >
                 <ThemedImage
                   src={{
                     light: "/pegcast/load-plan-light.webp",
@@ -261,28 +282,12 @@ export default function PegCastPage() {
                   className="h-auto w-full"
                 />
               </div>
-              <div className="grid max-w-xl gap-9">
-                <Feature title="Hang now in one tap">
-                  When the advice says Hang now, tap I&apos;ve hung it out.
-                  PegCast saves the load and tells you when to bring it in.
-                </Feature>
-                <Feature title="Tells you why">
-                  The time to bring the washing in comes with its reason:
-                  dark, rain, damp air or strong wind. A small chance of rain
-                  only adds a caution, such as &ldquo;A light shower is possible
-                  at 2:00 pm.&rdquo;
-                </Feature>
-                <Feature title="The Load Plan">
-                  Plan a load for later. PegCast checks the weather again
-                  before you hang it out. While the washing is out, Check
-                  again tells you if the time to bring it in has changed.
-                </Feature>
-                <Feature title="Reminders">
-                  Turn on a reminder for when to bring the washing in. A load
-                  you plan for later can also remind you at its Hang time.
-                  PegCast can alert you if the forecast changes.
-                </Feature>
-              </div>
+              <Feature title="Reminders" className="max-w-xl md:col-start-2 md:row-start-5">
+                Turn on a reminder for when to bring the washing in. A load you
+                plan for later can also remind you at its Hang time. PegCast
+                can also alert you if the forecast changes. iOS decides when
+                its background checks run, so an alert can arrive hours late.
+              </Feature>
             </div>
 
             <div className="mt-20 grid items-center gap-12 md:grid-cols-2 md:gap-20">
@@ -393,9 +398,17 @@ export default function PegCastPage() {
   );
 }
 
-function Feature({ title, children }: { title: string; children: React.ReactNode }) {
+function Feature({
+  title,
+  className = "",
+  children,
+}: {
+  title: string;
+  className?: string;
+  children: React.ReactNode;
+}) {
   return (
-    <div>
+    <div className={className}>
       <h3 className="text-2xl font-bold">{title}</h3>
       <p className={`${styles.muted} mt-2 text-lg leading-relaxed`}>{children}</p>
     </div>
