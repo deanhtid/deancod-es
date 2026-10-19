@@ -96,7 +96,7 @@ const steps = [
   },
   {
     label: "Dry from about",
-    text: "When it should be dry.",
+    text: "When the washing should be dry.",
     className: styles.dryByStep,
     icon: SunIcon,
   },
@@ -210,9 +210,13 @@ export default function PegCastPage() {
                   cover and daylight, hour by hour. It also works out how much sun
                   reaches the washing. Then it tells you what to do and when.
                 </p>
-                <p className={`${styles.muted} mt-4 text-lg leading-relaxed`}>
-                  PegCast sets its dry times a little late on purpose, so you
-                  do not bring the washing in damp.
+                <p className="mt-4 text-lg leading-relaxed">
+                  <strong>Built on drying science.</strong>{" "}
+                  <span className={styles.muted}>
+                    PegCast works out drying time from Apple Weather forecasts
+                    and published research on how fabric dries. Weather can
+                    change, so keep an eye on the sky.
+                  </span>
                 </p>
               </div>
               <ol className={`${styles.steps} grid gap-5`}>
@@ -291,6 +295,10 @@ export default function PegCastPage() {
                   Say &ldquo;Check drying advice in PegCast&rdquo; or
                   &ldquo;Open my Load Plan in PegCast&rdquo;.
                 </Feature>
+                <Feature title="Drying Outcomes">
+                  Keep a record of how each load dried. Export your Drying
+                  Outcomes when you like, and choose where they go.
+                </Feature>
               </div>
               <div className="flex flex-col items-center gap-6 sm:flex-row sm:items-end md:flex-col md:items-start lg:flex-row lg:items-end">
                 <ThemedImage
@@ -335,8 +343,8 @@ export default function PegCastPage() {
                 <Feature title="The weather chart">
                   Small charts show the drying speed, the chance of rain and
                   the wind for each hour. A green band marks the Recommended
-                  Window. Lines mark the advice times, and daylight hours are
-                  shaded.
+                  Window, lines mark the advice times, and the chart shows the
+                  hours of daylight.
                 </Feature>
               </div>
             </div>
@@ -365,8 +373,8 @@ export default function PegCastPage() {
               <div>
                 <h2 className="text-2xl font-extrabold">Privacy</h2>
                 <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
-                  No account, no adverts or tracking, and your plans stay on
-                  your iPhone.
+                  The app has no account, no adverts and no tracking. Your
+                  plans stay on your iPhone.
                 </p>
                 <p className="mt-5 text-lg font-bold">
                   {/* A static page from PegCast, not a route, so a plain link loads it. */}
