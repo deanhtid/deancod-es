@@ -3,7 +3,7 @@ import { Nunito } from "next/font/google";
 import Image from "next/image";
 import Link from "next/link";
 import SiteFooter from "@/components/SiteFooter";
-import { appStoreId, appStoreUrl, onAppStore } from "./launch";
+import { appStoreId, appStoreUrl, onAppStore, storeStatus } from "./launch";
 import ThemedImage, { type Themed } from "./ThemedImage";
 import WashingLine from "./WashingLine";
 import styles from "./pegcast.module.css";
@@ -188,7 +188,7 @@ export default function PegCastPage() {
                   className={`${styles.pill} mt-7 inline-flex items-center gap-2 rounded-full px-4 py-2 text-base font-semibold`}
                 >
                   <ClockIcon />
-                  Coming soon to the App Store
+                  {storeStatus}
                 </p>
               )}
             </div>
@@ -271,21 +271,21 @@ export default function PegCastPage() {
               On a phone the Load Plan screenshot follows "The Load Plan".
               On a wider screen it spans every row of the left column, and the empty rows centre the text.
             */}
-            <div className="mt-12 grid gap-9 md:grid-cols-[auto_1fr] md:grid-rows-[1fr_repeat(4,auto)_1fr] md:gap-x-20">
+            <div className="mt-12 grid gap-9 md:grid-cols-[auto_1fr] md:grid-rows-[1fr_repeat(4,auto)_1fr] md:gap-x-20 md:gap-y-0">
               <Feature title="Hang now in one tap" className="max-w-xl md:col-start-2 md:row-start-2">
                 When the advice says Hang now, tap I&apos;ve hung it out.
                 PegCast saves the load and tells you when to bring it in.
               </Feature>
-              <Feature title="Tells you why" className="max-w-xl md:col-start-2 md:row-start-3">
+              <Feature title="Tells you why" className="max-w-xl md:col-start-2 md:row-start-3 md:mt-9">
                 The time to bring the washing in comes with its reason: dark,
                 rain, damp air or strong wind. A small chance of rain only adds
                 a caution, such as &ldquo;A light shower is possible at 2:00
                 pm.&rdquo;
               </Feature>
-              <Feature title="The Load Plan" className="max-w-xl md:col-start-2 md:row-start-4">
-                Plan a load for later. PegCast checks the weather again before
-                you hang it out. While the washing is out, Check again tells
-                you if the time to bring it in has changed.
+              <Feature title="The Load Plan" className="max-w-xl md:col-start-2 md:row-start-4 md:mt-9">
+                Plan a load for later. When you hang it out, PegCast checks the
+                weather again. While the washing is out, Check again tells you
+                if the time to bring it in has changed.
               </Feature>
               <div
                 className={`${styles.frame} mx-auto my-3 w-60 sm:w-64 md:col-start-1 md:row-span-6 md:row-start-1 md:my-0 md:self-center`}
@@ -301,10 +301,10 @@ export default function PegCastPage() {
                   className="h-auto w-full"
                 />
               </div>
-              <Feature title="Reminders" className="max-w-xl md:col-start-2 md:row-start-5">
+              <Feature title="Reminders" className="max-w-xl md:col-start-2 md:row-start-5 md:mt-9">
                 Turn on a reminder for when to bring the washing in. A load you
                 plan for later can also remind you at its Hang time. PegCast
-                can also alert you if the forecast changes. iOS decides when
+                can alert you if the forecast changes. iOS decides when
                 its background checks run, so an alert can arrive hours late.
               </Feature>
             </div>
@@ -386,7 +386,13 @@ export default function PegCastPage() {
                 <p className={`${styles.muted} mt-3 text-lg leading-relaxed`}>
                   {availability.text}
                 </p>
-                {onAppStore && <AppStoreBadge className="mt-5" />}
+                {onAppStore && (
+                  <p className="mt-5 text-lg font-bold">
+                    <a href={appStoreUrl} className={styles.accentLink}>
+                      View PegCast on the App Store
+                    </a>
+                  </p>
+                )}
                 <p className="mt-5 text-lg font-bold">
                   Made by{" "}
                   <Link href="/" className={styles.accentLink}>
@@ -434,7 +440,10 @@ function Feature({
   );
 }
 
-/** Apple's own badge artwork, unaltered and at least 40 px high, as Apple's badge guidelines ask. */
+/**
+ * Apple's own badge artwork, unaltered and at least 40 px high, as Apple's badge guidelines ask.
+ * They also allow one badge for each layout, so the panel lower down uses a text link.
+ */
 function AppStoreBadge({ className }: { className: string }) {
   return (
     <a href={appStoreUrl} className={`${className} inline-block rounded-[10px]`}>

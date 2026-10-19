@@ -10,6 +10,7 @@ import {
 } from "@heroicons/react/24/outline";
 import Image from "next/image";
 import Link from "next/link";
+import { storeStatus } from "@/app/pegcast/launch";
 import SiteFooter from "@/components/SiteFooter";
 
 const capabilities = [
@@ -54,7 +55,7 @@ const skills = [
   "Reliability",
 ];
 
-const pegcastFacts = ["iPhone app", "In private testing"];
+const pegcastFacts = ["iPhone app", storeStatus];
 
 const personSchema = {
   "@context": "https://schema.org",
